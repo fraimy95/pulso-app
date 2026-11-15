@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css"><script src="words_3b.js"></script><script src="common.js"></script>
+<style>.ic{position:relative;display:inline-flex;margin:0 8px 12px}.ic .x{position:absolute;inset:0;opacity:0}</style>
+</head><body><div id="stage">
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1a" style="left:80px;top:300px">Servicios</div>
+  <div class="abs h-xl" id="s1b" style="left:80px;top:440px;color:var(--red)">al límite</div>
+  <svg class="abs" id="s1g" style="left:190px;top:640px" width="700" height="420" viewBox="0 0 700 420">
+    <path d="M70 380 A280 280 0 0 1 630 380" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="60"/>
+    <path d="M70 380 A280 280 0 0 1 210 137" fill="none" stroke="#3FC28A" stroke-width="60"/>
+    <path d="M210 137 A280 280 0 0 1 490 137" fill="none" stroke="#FFD25A" stroke-width="60"/>
+    <path d="M490 137 A280 280 0 0 1 630 380" fill="none" stroke="#E2333F" stroke-width="60"/>
+    <g id="s1n"><path d="M350 380 L350 140" stroke="#F5F2EA" stroke-width="14" stroke-linecap="round"/><circle cx="350" cy="380" r="28" fill="#F5F2EA"/></g>
+  </svg>
+</div>
+<div class="scene" id="s2">
+  <div class="abs" id="s2c" style="left:80px;top:290px"><div class="big" style="font-size:110px;color:var(--red)">+<span id="s2v">0</span></div><div class="lbl" style="color:var(--ink)">escuelas cerradas o usadas como albergues</div></div>
+  <div class="abs" id="s2i" style="left:70px;top:480px;width:960px;display:flex;flex-wrap:wrap"></div>
+  <div class="abs legend" id="s2lg" style="left:80px;top:720px"></div>
+  <div class="abs figs" id="s2f" style="left:70px;top:790px;width:960px"></div>
+  <div class="abs" id="s2s" style="left:80px;top:1080px;display:flex;align-items:baseline;gap:20px"><span class="big" style="font-size:90px;color:var(--gold)">+<span id="s2sv">0</span></span><span style="font-size:38px;font-weight:800">estudiantes<br>sin clases regulares</span></div>
+</div>
+<div class="scene" id="s3">
+  <div class="abs pill" id="s3p" style="left:80px;top:300px">Puerto Príncipe · hospitales con camas</div>
+  <div class="abs" id="s3n" style="left:80px;top:400px;display:flex;align-items:baseline;gap:24px"><span class="big" style="font-size:150px;color:var(--green)"><span id="s3v">0</span>%</span><span style="font-size:40px;font-weight:800;line-height:1.1">funciona con<br>normalidad</span></div>
+  <div class="abs" id="s3i" style="left:70px;top:620px;width:960px;display:flex;flex-wrap:wrap"></div>
+  <div class="abs figs" id="s3f" style="left:70px;top:1000px;width:960px"></div>
+</div>
+<div class="scene" id="s4">
+  <div class="abs lbl" id="s4h" style="left:80px;top:300px">Plan humanitario de la ONU · 2026</div>
+  <div class="abs big" id="s4m" style="left:80px;top:350px;font-size:150px">US$ <span id="s4v">0</span> M</div>
+  <div class="abs" id="s4bar" style="left:80px;top:620px;width:920px;height:110px;border-radius:24px;background:rgba(255,255,255,.08);overflow:hidden">
+    <div id="s4b2" style="position:absolute;left:0;top:0;height:100%;width:0;background:repeating-linear-gradient(45deg,rgba(255,210,90,.55) 0 14px,rgba(255,210,90,.3) 14px 28px)"></div>
+    <div id="s4b1" style="position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold)"></div></div>
+  <div class="abs" style="left:540px;top:600px;width:4px;height:150px;background:var(--ink);opacity:.7" id="s4half"></div>
+  <div class="abs lbl" id="s4hl" style="left:470px;top:760px;color:var(--ink);font-size:24px">50 %</div>
+  <div class="abs" id="s4j" style="left:80px;top:820px"><div class="big" style="font-size:96px;color:var(--gold)">27 %</div><div class="lbl">financiado en junio</div></div>
+  <div class="abs" id="s4n" style="left:540px;top:820px"><div class="big" style="font-size:96px">&lt; 50 %</div><div class="lbl">en noviembre</div></div>
+  <div class="abs" id="s4c" style="left:70px;top:1060px;display:flex;gap:18px"></div>
+</div>
+<div class="scene" id="s9" style="height:1920px">
+  <div class="abs" style="left:80px;top:300px;font-size:36px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs" style="left:80px;top:360px;font-size:100px;font-weight:900;line-height:1.02;letter-spacing:-.03em">Última parte:<br><span style="color:var(--gold)">resiliencia y<br>caminos de salida</span></div>
+  <div class="abs" style="left:80px;top:1440px;font-size:30px;color:var(--mut);font-weight:500;line-height:1.5">Fuentes: UNICEF, OCHA, Cruz Roja.<br>Datos a noviembre de 2026.</div>
+</div>
+</div>
+<script>
+const AEND = 33.3, DUR = 36.5;
+KEYRE = /^(límite|escuelas|albergues|estudiantes|hospitales|normalidad|ONU|junio|noviembre|mitad)$/i;
+chromeInit("Crisis humanitaria");
+$("s2i").innerHTML = Array.from({ length: 16 }, (_, i) => `<div class="ic" id="sc${i}" style="opacity:0"><span class="a">${icon("school", 92, "#F5F2EA", 1.6)}</span><span class="x">${icon(i % 2 ? "tent" : "school", 92, "#E2333F", 1.8)}</span></div>`).join("");
+$("s2lg").innerHTML = icon("school", 32, "#8D95AB") + " = 100 escuelas &nbsp;&nbsp; " + fig("student", "#8D95AB", 40) + " = 10.000 estudiantes";
+$("s2f").innerHTML = figRow(24, "student", "#FFD25A", 120, 14);
+$("s3i").innerHTML = Array.from({ length: 10 }, (_, i) => `<div class="ic" id="hs${i}" style="opacity:0;margin:0 10px 14px">${icon("hospital", 160, "#8D95AB", 1.5)}</div>`).join("");
+$("s3f").innerHTML = figRow(14, ["woman", "man", "child", "man", "woman", "child", "man"], "#8D95AB", 110, 16);
+$("s4c").innerHTML = Array.from({ length: 10 }, (_, i) => `<div id="cn${i}" style="opacity:0">${icon("coin", 80, "#8D95AB", 1.6)}</div>`).join("");
+window.render = function (t) {
+  scene("s1", t, -1, 2.9, .3);
+  [["s1a", 0], ["s1b", .3]].forEach(([id, a]) => { const p = pr(t, a - .2, a + .3); $(id).style.opacity = id === "s1a" ? Math.max(.4, eo(p)) : eo(p); $(id).style.transform = `translateX(${(1 - eo(p)) * -80}px)`; });
+  { const p = eio(pr(t, .2, 2.0)); const ang = -80 + 140 * p + Math.sin(t * 30) * 3 * pr(t, 1.6, 2); $("s1n").setAttribute("transform", `rotate(${ang} 350 380)`); }
+  scene("s2", t, 2.8, 11.95);
+  pop("s2c", t, 3.4); count("s2v", t, 3.5, 4.4, 1600);
+  for (let i = 0; i < 16; i++) { const e = $("sc" + i); const p = pr(t, 3.5 + i * .05, 3.8 + i * .05); e.style.opacity = eo(p); e.style.transform = `translateY(${(1 - eb(p)) * 30}px)`;
+    const k = eo(pr(t, 5.4 + i * .06, 5.7 + i * .06)); e.querySelector(".x").style.opacity = k; e.querySelector(".a").style.opacity = 1 - k; }
+  pop("s2lg", t, 6.0);
+  figAnim("s2f", t, 8.3, .05, (i, tt) => tt > 10.0 + i * .03 ? "#8D95AB" : "#FFD25A");
+  pop("s2s", t, 9.9); count("s2sv", t, 10.0, 11.0, 240000);
+  scene("s3", t, 11.9, 18.95);
+  pop("s3p", t, 12.4); pop("s3n", t, 13.9); count("s3v", t, 14.1, 14.9, 41);
+  for (let i = 0; i < 10; i++) { const e = $("hs" + i); const p = pr(t, 12.6 + i * .06, 12.9 + i * .06); e.style.opacity = eo(p); e.style.transform = `scale(${.8 + .2 * eb(p)})`;
+    const ok = i < 4; const k = pr(t, 14.2 + i * .07, 14.4 + i * .07); e.querySelector("svg").setAttribute("stroke", k > 0 ? (ok ? "#3FC28A" : "#5A3040") : "#8D95AB"); }
+  figAnim("s3f", t, 15.6, .07);
+  scene("s4", t, 18.9, AEND + .3);
+  pop("s4h", t, 19.0); pop("s4m", t, 22.0); count("s4v", t, 22.2, 23.2, 880);
+  pop("s4bar", t, 25.6, .4, 30); pop("s4half", t, 25.6); pop("s4hl", t, 25.6);
+  $("s4b1").style.width = (eo(pr(t, 26.3, 27.4)) * 27) + "%"; $("s4b2").style.width = (eo(pr(t, 30.0, 31.6)) * 47) + "%";
+  pop("s4j", t, 27.0); pop("s4n", t, 31.3);
+  for (let i = 0; i < 10; i++) { const e = $("cn" + i); pop(e, t, 25.8 + i * .04, .3, 20); const c = i < 3 && t > 27.0 ? "#FFD25A" : (i < 5 && t > 31.4 ? "rgba(255,210,90,.55)" : "#8D95AB"); e.querySelector("svg").setAttribute("stroke", c); }
+  scene("s9", t, AEND + .2, DUR + 1, .4);
+  chrome(t, AEND);
+};
+buildCues();
+</script></body></html>

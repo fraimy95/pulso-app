@@ -1,0 +1,253 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script>window.VW = 1920; window.VH = 1080;</script>
+<link rel="stylesheet" href="common.css"><link rel="stylesheet" href="wide.css">
+<script src="geo.js"></script><script src="words_bk.js"></script><script src="common.js"></script><script src="capas.js"></script>
+<style>
+#mapShade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(10,15,30,0) 30%,rgba(10,15,30,.85) 80%);opacity:0}
+.big2{font-weight:900;letter-spacing:-.03em;line-height:1}
+.card2{position:absolute;border-radius:28px;padding:28px 32px;border:2px solid var(--line);background:linear-gradient(180deg,#18223F,#111830)}
+.tag{display:inline-block;font-size:22px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:10px;background:rgba(255,255,255,.08);color:var(--mut)}
+.num{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--gold);color:#0A0F1E;font-weight:900;font-size:36px;display:flex;align-items:center;justify-content:center}
+.mlab{position:absolute;font-weight:900;letter-spacing:.12em;text-transform:uppercase;transform:translate(-50%,-50%);text-shadow:0 2px 14px rgba(0,0,0,.9);opacity:0;white-space:nowrap}
+#world{position:absolute;inset:0;z-index:2}
+.fl{display:inline-flex;align-items:center;gap:12px}
+</style></head><body><div id="stage"><div id="world">
+<div id="mapShade"></div>
+<div class="mlab" id="mlSLV" style="font-size:30px;color:#8FB0FF">El Salvador</div>
+<div class="mlab" id="mlHTI" style="font-size:30px;color:#FF8A92">Haití</div>
+<div id="pinC" class="abs" style="opacity:0"><div style="display:flex;flex-direction:column;align-items:center">
+  <div style="background:var(--red);color:#fff;font-weight:800;font-size:26px;padding:8px 18px;border-radius:12px;white-space:nowrap">Croix-des-Bouquets · 18 oct.</div>
+  <div style="width:4px;height:40px;background:var(--red)"></div><div id="pinDot" style="width:24px;height:24px;border-radius:50%;background:var(--red)"></div></div></div>
+
+<!-- S1 gancho -->
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1t" style="left:100px;top:170px;font-size:96px">¿Qué hace Bukele<br><span style="color:var(--gold)">en Haití?</span></div>
+  <div class="card2" id="s1a" style="left:1380px;top:300px;width:440px"><div class="big2" style="font-size:96px;color:var(--red)">4</div><div class="lbl">soldados desaparecidos</div></div>
+  <div class="card2" id="s1b" style="left:1380px;top:540px;width:440px"><div class="big2" style="font-size:96px;color:var(--gold)">+<span id="s1n">0</span></div><div class="lbl">militares salvadoreños</div></div>
+</div>
+<!-- S2 modelo Bukele -->
+<div class="scene" id="s2">
+  <div class="abs hdr" id="s2h">El Salvador · desde marzo de 2022</div>
+  <div class="abs pill red" id="s2r" style="left:100px;top:220px">Régimen de excepción · garantías suspendidas</div>
+  <svg class="abs" id="s2bal" style="left:610px;top:250px" width="700" height="420" viewBox="0 0 700 420">
+    <path d="M350 60V380M250 390h200" stroke="#F5F2EA" stroke-width="10" stroke-linecap="round"/>
+    <g id="s2beam"><path d="M90 70H610" stroke="#F5F2EA" stroke-width="10" stroke-linecap="round"/>
+      <g id="panL"><path d="M90 70l-60 110M90 70l60 110" stroke="#8D95AB" stroke-width="3"/><path d="M20 180h140a70 30 0 0 1-140 0z" fill="#3FC28A"/></g>
+      <g id="panR"><path d="M610 70l-60 110M610 70l60 110" stroke="#8D95AB" stroke-width="3"/><path d="M540 180h140a70 30 0 0 1-140 0z" fill="#E2333F"/></g></g>
+    <circle cx="350" cy="62" r="16" fill="#FFD25A"/>
+  </svg>
+  <div class="card2" id="s2L" style="left:100px;top:360px;width:480px;border-color:rgba(63,194,138,.6)"><div class="tag" style="color:#3FC28A">Seguridad</div><div class="big2" style="font-size:60px;margin-top:12px">Homicidios ↓</div><div class="lbl" style="margin-top:8px">mínimos históricos</div></div>
+  <div class="card2" id="s2R" style="left:1340px;top:360px;width:480px;border-color:rgba(226,51,63,.6)"><div class="tag" style="color:#FF8A92">Libertades</div><div class="big2" style="font-size:60px;margin-top:12px">+<span id="s2v">0</span></div><div class="lbl" style="margin-top:8px">personas detenidas</div><div class="lbl" id="s2c" style="margin-top:10px;color:#FF8A92">+ cientos de muertes bajo custodia</div></div>
+  <div class="abs figs" id="s2f" style="left:100px;top:720px;width:1720px;justify-content:center"></div>
+  <div class="abs big2" id="s2m" style="left:0;width:1920px;text-align:center;top:180px;font-size:64px;color:var(--gold)">«El modelo Bukele»</div>
+</div>
+<!-- S3 cronología -->
+<div class="scene" id="s3">
+  <div class="abs hdr" id="s3h">Cómo llegó El Salvador a Haití</div>
+  <div class="abs" id="s3line" style="left:160px;top:398px;height:6px;width:0;background:var(--line);border-radius:3px"></div>
+  <div class="abs" id="s3a" style="left:120px;top:300px;width:420px"><div class="big2" style="font-size:72px;color:var(--gold)">2024</div><div style="font-size:30px;font-weight:700;margin-top:60px">Ofrece ayuda y envía un contingente reducido a la misión de <b>Kenia</b></div></div>
+  <div class="abs" id="s3b" style="left:720px;top:300px;width:420px"><div class="big2" style="font-size:72px;color:#8FB0FF">2025</div><div style="font-size:30px;font-weight:700;margin-top:60px">La misión pasa a ser la <b>GSF</b>, Fuerza de Supresión de Pandillas (ONU)</div></div>
+  <div class="abs" id="s3c" style="left:1320px;top:300px;width:460px"><div class="big2" style="font-size:72px;color:#3FC28A">Sep. 2026</div><div style="font-size:30px;font-weight:700;margin-top:60px">La Asamblea prorroga la participación hasta <b>octubre de 2027</b></div></div>
+</div>
+<!-- S4 emboscada -->
+<div class="scene" id="s4">
+  <div class="abs hdr" id="s4h">18 de octubre · la emboscada</div>
+  <div class="card2" id="s4v" style="left:100px;top:230px;width:560px;display:flex;align-items:center;gap:24px">
+    <svg width="150" height="100" viewBox="0 0 150 100"><rect x="10" y="30" width="120" height="45" rx="10" fill="#5A6380"/><rect x="40" y="12" width="60" height="26" rx="6" fill="#5A6380"/><circle cx="38" cy="80" r="14" fill="#2A3150"/><circle cx="104" cy="80" r="14" fill="#2A3150"/><g id="s4boom" opacity="0"><circle cx="110" cy="40" r="34" fill="#FF9F43" opacity=".85"/><circle cx="110" cy="40" r="18" fill="#FFD25A"/></g></svg>
+    <div><div class="tag">Vehículo blindado de la GSF</div><div style="font-size:28px;font-weight:700;margin-top:10px">Disparos y explosivos, según el ejército salvadoreño</div></div></div>
+  <div class="abs" id="s4f" style="left:100px;top:470px;display:flex;gap:26px;align-items:flex-end"></div>
+  <div class="abs" id="s4t" style="left:560px;top:520px"><div class="big2" style="font-size:64px">4 técnicos de aviación</div><div class="lbl" style="margin-top:8px">salvadoreños · ningún grupo reivindicó el ataque</div></div>
+  <div class="abs stamp" id="s4s" style="left:560px;top:680px;font-size:46px;border-color:var(--gold);color:var(--gold)">Paradero sin confirmar</div>
+  <div class="abs pill" id="s4n" style="left:100px;top:780px;font-size:28px">Bukele rechazó un reporte que aseguraba haber hallado sus cuerpos</div>
+</div>
+<!-- S5 operacion -->
+<div class="scene" id="s5">
+  <div class="abs hdr" id="s5h">La respuesta de Bukele</div>
+  <div class="abs" id="s5q" style="left:100px;top:220px;display:flex;gap:18px;flex-wrap:wrap;width:1720px">
+    <span class="pill" id="q1">Operación de rescate</span><span class="pill red" id="q2">«Sufrirán las consecuencias»</span><span class="pill gold" id="q3">Retirada total si los liberan con vida</span></div>
+  <div class="abs" id="s5n" style="left:100px;top:330px"><div class="big2" style="font-size:110px;color:var(--gold)"><span id="s5a">0</span>–<span id="s5b">0</span></div><div class="lbl">efectivos desplegados</div></div>
+  <div class="abs figs" id="s5f" style="left:100px;top:520px;width:640px"></div>
+  <div class="abs" id="s5eq" style="left:790px;top:340px;display:flex;gap:16px;flex-direction:column"><span class="pill" id="e1">Fuerzas especiales</span><span class="pill" id="e2">Helicópteros</span><span class="pill" id="e3">Vehículos blindados</span></div>
+  <div class="card2" id="s5st" style="left:1180px;top:330px;width:640px"><div class="tag">12 de noviembre</div><div class="big2" style="font-size:52px;margin-top:12px">Estadio Sylvio Cator</div><div style="font-size:28px;font-weight:600;margin-top:10px;color:var(--mut)">Recuperado junto a policía y ejército haitianos · será base de operaciones</div></div>
+  <div class="card2" id="s5p1" style="left:1180px;top:700px;width:310px;padding:20px"><div class="tag" style="color:#3FC28A">Agradece</div><div style="font-size:30px;font-weight:800;margin-top:8px">Fils-Aimé<br><span style="font-size:22px;color:var(--mut)">primer ministro de Haití</span></div></div>
+  <div class="card2" id="s5p2" style="left:1510px;top:700px;width:310px;padding:20px"><div class="tag" style="color:#3FC28A">Respalda</div><div style="font-size:30px;font-weight:800;margin-top:8px">Abinader<br><span style="font-size:22px;color:var(--mut)">presidente dominicano</span></div></div>
+</div>
+<!-- S6 tres preguntas -->
+<div class="scene" id="s6">
+  <div class="abs hdr" id="s6h">Tres preguntas abiertas</div>
+  <div class="card2" id="c1" style="left:100px;top:220px;width:540px;height:600px"><div class="num" style="position:static">1</div><div class="big2" style="font-size:48px;margin:16px 0">Legal</div>
+    <div style="display:flex;align-items:baseline;gap:14px"><span class="big2" style="font-size:80px;color:#8FB0FF" id="c1a">200</span><span class="lbl">bajo mando ONU</span></div>
+    <div style="display:flex;align-items:baseline;gap:14px;margin-top:6px"><span class="big2" style="font-size:80px;color:var(--gold)" id="c1b">+2.000</span><span class="lbl">en total</span></div>
+    <div id="c1c" style="font-size:26px;font-weight:700;margin-top:18px">🔒 Acuerdo bilateral no publicado</div>
+    <div id="c1d" style="font-size:26px;font-weight:700;margin-top:10px;color:var(--mut)">La GSF se desmarca</div>
+    <div id="c1e" style="font-size:26px;font-weight:700;margin-top:10px;color:#FF8A92">Amnistía pide transparencia</div></div>
+  <div class="card2" id="c2" style="left:690px;top:220px;width:540px;height:600px"><div class="num" style="position:static">2</div><div class="big2" style="font-size:48px;margin:16px 0">Humana</div>
+    <div class="figs" id="c2f" style="width:480px"></div>
+    <div id="c2a" style="font-size:26px;font-weight:700;margin-top:10px">≈20 muertos en una operación · <span style="color:var(--mut)">prensa</span></div>
+    <div id="c2b" style="font-size:26px;font-weight:700;margin-top:8px">≥21 muertes · <span style="color:var(--mut)">ACLED</span></div>
+    <div id="c2c" style="font-size:26px;font-weight:700;margin-top:8px">≈30 heridos atendidos · <span style="color:var(--mut)">MSF</span></div>
+    <div id="c2d" style="font-size:24px;font-weight:700;margin-top:8px;color:#FF8A92">Denuncia de bombardeos ↔ Bukele lo niega</div></div>
+  <div class="card2" id="c3" style="left:1280px;top:220px;width:540px;height:630px"><div class="num" style="position:static">3</div><div class="big2" style="font-size:48px;margin:16px 0">Diplomática</div>
+    <div id="c3a" style="display:flex;align-items:center;gap:18px"><svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#F5F2EA" stroke-width="1.6"><path d="M3 21h18M5 21V10h14v11M4 10l8-6 8 6M8 21v-7M12 21v-7M16 21v-7"/><path d="M12 4V1h4v2h-4" stroke="#8FB0FF"/></svg><div style="font-size:28px;font-weight:800">EE. UU.: nota formal de protesta</div></div>
+    <div id="c3b" style="font-size:26px;font-weight:700;margin-top:18px">«Disparos salvadoreños alcanzaron nuestra embajada»</div>
+    <div id="c3c" style="font-size:26px;font-weight:700;margin-top:12px;color:var(--mut)">+ falta de coordinación</div>
+    <div class="stamp" id="c3d" style="display:inline-block;margin-top:24px;font-size:34px;padding:8px 18px;border-width:6px">El Salvador lo niega</div></div>
+</div>
+<!-- S7 funcionara -->
+<div class="scene" id="s7">
+  <div class="abs big2" id="s7t" style="left:0;width:1920px;text-align:center;top:170px;font-size:72px">¿Puede funcionar en Haití?</div>
+  <div class="card2" id="s7a" style="left:100px;top:310px;width:820px;height:500px;border-color:rgba(63,194,138,.6)"><div class="tag" style="color:#3FC28A">Defensores</div><div class="big2" style="font-size:46px;margin-top:20px;line-height:1.15">Resultados visibles<br>en pocas semanas</div><div style="font-size:28px;font-weight:600;margin-top:16px;color:var(--mut)">algo que la misión internacional no había logrado</div></div>
+  <div class="card2" id="s7b" style="left:1000px;top:310px;width:820px;height:500px;border-color:rgba(226,51,63,.6)"><div class="tag" style="color:#FF8A92">Críticos: Haití no es El Salvador</div>
+    <div id="s7i" style="display:flex;gap:18px;margin-top:22px;flex-wrap:wrap"></div>
+    <div id="s7w" style="font-size:28px;font-weight:700;margin-top:22px;color:#FF8A92">Fuerza extranjera fuera del mando ONU, sin reglas públicas</div>
+    <div class="pill gold" id="s7e" style="margin-top:20px;font-size:28px">Elecciones en El Salvador: 2027</div></div>
+</div>
+<!-- S8 cierre -->
+<div class="scene" id="s8">
+  <svg class="abs" style="left:0;top:520px" width="1920" height="380" viewBox="0 0 1920 380"><path d="M0 380V260l80-30 40 20 60-60 70 40 50-90 90 70 60-30 80 50 70-80 100 60 60-20 90 70 80-100 70 60 90-40 60 50 80-70 90 80 70-30 100 60 70-50 80 40 90-60 100 70V380z" fill="#141C36"/></svg>
+  <div class="abs figs" id="s8f" style="left:60px;top:600px;width:1800px;justify-content:center;flex-wrap:nowrap"></div>
+  <div class="abs big2" id="s8a" style="left:0;width:1920px;text-align:center;top:200px;font-size:60px">¿A qué costo? ¿Y quién responde por él?</div>
+  <div class="abs big2" id="s8b" style="left:0;width:1920px;text-align:center;top:330px;font-size:90px;color:var(--gold)">¿Salida o nueva intervención?</div>
+</div>
+<!-- final -->
+<div class="scene" id="s9" style="height:1080px">
+  <div class="abs" style="left:100px;top:200px;font-size:30px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs big2" style="left:100px;top:260px;font-size:96px">Bukele en Haití</div>
+  <div class="abs" style="left:100px;top:400px;font-size:34px;font-weight:600;color:var(--mut);line-height:1.5;width:1500px">Fuentes: AP, The Haitian Times, Al Jazeera, Axios, NPR, ACLED, Médicos Sin Fronteras, Amnistía Internacional, ONU.<br>Datos al 15 de noviembre de 2026 · Narración generada con IA.</div>
+</div>
+</div></div>
+<script>
+KEYRE = /^(Bukele|Haití|soldados|militares|excepción|homicidios|prisión|custodia|modelo|Kenia|GSF|Croix-des-Bouquets|desaparecieron|paradero|rescate|consecuencias|estadio|legal|humana|diplomática|ACLED|Amnistía|embajada|niega|esperanza|costo|salida|intervención)$/i;
+chromeInit("Bukele en Haití");
+capasInit();
+const AEND = WORDS[WORDS.length - 1].e + 0.6, DUR = AEND + 4.0;
+// anclas de escena
+const S = { s2: at("Para entenderlo") - .3, s3: at("El Salvador no llegó") - .3, s4: at("Todo cambió") - .3, s5: at("La respuesta fue") - .3,
+  s6: at("Pero la operación") - .3, s7: at("¿Puede funcionar") - .3, s8: at("Para millones") - .3 };
+const A = { // anclas finas
+  s1b: at("más de 2.000"), s1t: at("Nayib"), s2r: at("régimen"), s2v: at("prisión"), s2h: at("homicidios"), s2c: at("cientos"), s2m: at("modelo Bukele"),
+  s3a: at("En 2024"), s3k: at("Kenia"), s3b: at("Supresión"), s3c: at("En septiembre"),
+  s4c: at("Croix-des-Bouquets"), s4v: at("vehículo blindado"), s4x: at("explosivos"), s4f: at("Cuatro técnicos"), s4d: at("desaparecieron", 1, S.s4), s4p: at("paradero"), s4n: at("rechazó"),
+  q1: at("rescate"), q2: at("consecuencias"), q3: at("retirar"), s5n: at("desplegó"), e1: at("fuerzas especiales"), st: at("estadio"), p1: at("agradeció"), p2: at("Abinader"),
+  c1: at("La primera es legal"), c1a: at("solo unos"), c1c: at("bilateral"), c1d: at("desmarcado"), c1e: at("Amnistía"),
+  c2: at("La segunda pregunta"), c2a: at("murieron"), c2b: at("ACLED"), c2c: at("Médicos"), c2d: at("bombardeos"),
+  c3: at("La tercera pregunta"), c3b: at("embajada"), c3c: at("coordinación"), c3d: at("El Salvador lo niega"),
+  s7a: at("defensores"), s7b: at("críticos"), s7w: at("fuera del mando"), s7e: at("elecciones presidenciales"),
+  s8a: at("a qué costo"), s8b: at("una salida") };
+// relleno de contenidos
+$("s2f").innerHTML = figRow(40, "man", "rgba(226,51,63,.85)", 70, 10);
+$("s4f").innerHTML = figRow(4, "soldier", "#F5F2EA", 210, 0);
+$("s5f").innerHTML = figRow(25, "soldier", "#FFD25A", 80, 10);
+$("c2f").innerHTML = figRow(20, ["man", "woman", "child", "man", "woman"], "#E2333F", 56, 6);
+$("s7i").innerHTML = [["Estado con control", "house"], ["Cárceles", "block"], ["Tribunales", "doc"], ["Autoridades electas", "ballot"]].map(([t, ic], i) =>
+  `<div id="mi${i}" class="pill red" style="font-size:24px;opacity:0">${icon(ic, 30, "#FF8A92")} ${t} ✕</div>`).join("");
+$("s8f").innerHTML = figRow(22, ["man", "woman", "child", "woman", "man", "child"], "#FFD25A", 150, 6);
+// arco El Salvador -> Haití
+const slv = lonlat(-88.9, 13.75), hti = [-40, 0];
+$("mapX").innerHTML = `<path id="arc" d="M${slv[0]},${slv[1]} Q${(slv[0] + hti[0]) / 2},${-600} ${hti[0]},${hti[1]}" fill="none" stroke="#FFD25A" stroke-width="4" vector-effect="non-scaling-stroke" stroke-dasharray="4000" stroke-dashoffset="4000" stroke-linecap="round"/>`;
+const cdb = lonlat(-72.2269, 18.5769);
+
+// ================= v2: banderas, insignias, minimapas, rótulos, cámara, capítulos
+const add = (id, html, pos = "beforeend") => $(id).insertAdjacentHTML(pos, html);
+$("mlSLV").innerHTML = `<span class="fl">${flag("SV", 54)} El Salvador</span>`;
+$("mlHTI").innerHTML = `<span class="fl">${flag("HT", 54)} Haití</span>`;
+add("s1a", `<div class="abs" style="right:24px;top:24px">${flag("SV", 70)}</div>`);
+add("s1b", `<div class="abs" style="right:24px;top:24px">${flag("SV", 70)}</div>`);
+add("s2h", ` &nbsp;${flag("SV", 48)}`);
+add("s3a", `<div class="abs" id="v_ke" style="left:220px;top:10px">${flag("KE", 70)}</div>`);
+add("s3b", `<div class="abs fl" id="v_un" style="left:220px;top:6px">${badge("ONU", 60)}${badge("GSF", 60)}</div>`);
+add("s3c", `<div class="abs" id="v_sv3" style="left:330px;top:10px">${flag("SV", 70)}</div>`);
+add("s4t", `<div style="margin-top:14px">${flag("SV", 60)}</div>`);
+add("s5n", `<div style="margin-top:10px">${flag("SV", 60)}</div>`);
+$("s5st").innerHTML = `<div class="tag">12 de noviembre · Puerto Príncipe</div><div class="big2" style="font-size:44px;margin:10px 0 12px">Estadio Sylvio Cator</div>` +
+  miniMap("mm5", 576, 230, lonlat(-72.255, 18.56), 46, [
+    { lon: -72.3385, lat: 18.5375, t: "Estadio", c: "#FFD25A" },
+    { lon: -72.2269, lat: 18.5769, t: "Croix-des-Bouquets", c: "#E2333F" }]);
+add("s5p1", `<div class="abs" style="right:18px;top:18px">${flag("HT", 48)}</div>`);
+add("s5p2", `<div class="abs" style="right:18px;top:18px">${flag("DO", 48)}</div>`);
+$("c1c").insertAdjacentHTML("afterbegin", "");
+add("c1", `<div class="abs fl" style="right:24px;top:24px">${badge("ONU", 52)}${badge("GSF", 52)}</div>`);
+$("c1e").innerHTML = `<span class="fl">${badge("AI", 40)} Amnistía pide transparencia</span>`;
+$("c2b").innerHTML = `<span class="fl">${badge("ACLED", 40)} ≥21 muertes en la zona</span>`;
+$("c2c").innerHTML = `<span class="fl">${badge("MSF", 40)} ≈30 heridos atendidos</span>`;
+$("c3a").innerHTML = `<div class="fl">${flag("US", 84)}<span style="font-size:40px;font-weight:900;color:var(--mut)">vs</span>${flag("SV", 84)}</div>`;
+add("c3", `<div id="mm6" style="margin-top:18px">${miniMap("mm6", 476, 130, lonlat(-72.29, 18.565), 30, [{ lon: -72.2815, lat: 18.5710, t: "Embajada EE. UU.", c: "#8FB0FF" }])}</div>`);
+add("s7b", `<div class="abs fl" style="right:24px;top:20px">${flag("HT", 56)}<span style="font-weight:900;color:#FF8A92">≠</span>${flag("SV", 56)}</div>`);
+// rótulos, cámara y capítulos
+ROTULOS.push([A.s1t - .1, 3.4, "Nayib Bukele", "Presidente de El Salvador", "SV"],
+             [at("Alix") - .1, 3.4, "Alix Didier Fils-Aimé", "Primer ministro de Haití", "HT"],
+             [at("Luis Abinader") - .1, 3.2, "Luis Abinader", "Presidente de la Rep. Dominicana", "DO"]);
+CAMPUNCH.push([A.s1b, 1.12, 84, 60, 2.6], [A.s2v, 1.1, 84, 45, 3], [A.s4p, 1.12, 35, 68, 3], [A.s5n, 1.06, 18, 45, 3],
+              [A.st, 1.05, 78, 50, 4], [A.c1a, 1.05, 20, 50, 4], [A.c2a, 1.05, 50, 50, 4], [A.c3d, 1.12, 82, 70, 2.6], [A.s8b, 1.08, 50, 35, 4]);
+CAPS.push([S.s2, "2 / 8", "El modelo Bukele", "#FFD25A"], [S.s3, "3 / 8", "Cómo llegó a Haití", "#8FB0FF"], [S.s4, "4 / 8", "La emboscada", "#FF6B75"],
+          [S.s5, "5 / 8", "La operación", "#FFD25A"], [S.s6, "6 / 8", "Tres preguntas", "#8FB0FF"], [S.s7, "7 / 8", "¿Puede funcionar?", "#3FC28A"],
+          [S.s8, "8 / 8", "¿Salida o intervención?", "#FFD25A"]);
+function extras(t) {
+  zoomIn("v_ke", t, A.s3k, 1.6); pop("v_un", t, A.s3b); pop("v_sv3", t, A.s3c + .3);
+  [0, 1].forEach(i => { const e = $("mm5_p" + i); if (e) { const a = i === 0 ? A.st + .4 : A.st + 1.4; const p = eb(pr(t, a, a + .4)); e.setAttribute("opacity", pr(t, a, a + .2)); } });
+  { const e = $("mm6_p0"); if (e) e.setAttribute("opacity", pr(t, A.c3b, A.c3b + .2)); }
+  pop("mm6", t, A.c3b - .2);
+}
+
+window.render = function (t) {
+  // ---- mapa: gancho (0..S.s2) y emboscada (S.s4..S.s5)
+  const mHook = 1 - pr(t, S.s2 - .3, S.s2 + .2), mAmb = pr(t, S.s4, S.s4 + .5) * (1 - pr(t, A.s4f - .4, A.s4f));
+  const mOn = Math.max(mHook, mAmb); $("map").style.opacity = mOn; $("mapShade").style.opacity = mOn;
+  if (t < S.s3) { const p = eio(pr(t, 1.5, A.s1b + .8)); cam(lerp(-480, 260, p), lerp(250, 30, p), lerpLog(2700, 1000, p), .5); }
+  else { const p = eio(pr(t, S.s4 + .3, A.s4c + 1.0)); cam(lerp(-40, cdb[0], p), lerp(0, cdb[1], p), lerpLog(900, 280, p), .45); }
+  const sv = $("c-SLV"); if (sv) sv.setAttribute("fill", `rgba(59,99,255,${.5 + .3 * Math.sin(t * 4)})`);
+  GEO.hti.forEach(d => dep(d.name).setAttribute("fill", `rgba(226,51,63,${.7 + .25 * Math.sin(t * 4)})`));
+  $("arc").setAttribute("stroke-dashoffset", 4000 * (1 - eo(pr(t, .8, 2.6))));
+  placeAt("mlSLV", slv[0], slv[1] + 70); placeAt("mlHTI", hti[0], hti[1] - 120);
+  $("mlSLV").style.opacity = pr(t, .6, 1) * mHook * (1 - pr(t, A.s1b, A.s1b + .5)); $("mlHTI").style.opacity = pr(t, 2.2, 2.6) * mHook * (1 - pr(t, A.s1t - .4, A.s1t));
+  { placeAt("pinC", cdb[0], cdb[1]); const p = pr(t, A.s4c, A.s4c + .3); $("pinC").style.opacity = (p > 0 ? 1 : 0) * mAmb; $("pinC").style.transform = `translate(-50%,calc(-100% + 12px - ${(1 - eb(p)) * 50}px))`; }
+  // ---- S1
+  scene("s1", t, -1, S.s2 + .1, .3);
+  pop("s1a", t, 0.2); pop("s1b", t, A.s1b); count("s1n", t, A.s1b, A.s1b + .9, 2000);
+  { const p = pr(t, A.s1t - .3, A.s1t + .2); $("s1t").style.opacity = eo(p); $("s1t").style.transform = `translateX(${(1 - eo(p)) * -80}px)`; }
+  // ---- S2
+  scene("s2", t, S.s2, S.s3 + .1);
+  pop("s2h", t, S.s2 + .2); pop("s2r", t, A.s2r); pop("s2bal", t, S.s2 + .5, .5, 0);
+  { const tilt = 10 * eo(pr(t, A.s2h, A.s2h + .6)) - 18 * eo(pr(t, A.s2v, A.s2v + .8)); $("s2beam").setAttribute("transform", `rotate(${tilt} 350 62)`);
+    $("panL").setAttribute("transform", `rotate(${-tilt} 90 70)`); $("panR").setAttribute("transform", `rotate(${-tilt} 610 70)`); }
+  slideX("s2L", t, A.s2h); slideX("s2R", t, A.s2v, 120); count("s2v", t, A.s2v, A.s2v + 1.0, 80000); pop("s2c", t, A.s2c);
+  figAnim("s2f", t, A.s2v, .03); $("s2f").style.opacity = 1 - pr(t, A.s2m - .3, A.s2m);
+  pop("s2m", t, A.s2m); ["s2r","s2h"].forEach(id => $(id).style.opacity = +$(id).style.opacity * (1 - pr(t, A.s2m - .3, A.s2m)));
+  // ---- S3
+  scene("s3", t, S.s3, S.s4 + .1);
+  pop("s3h", t, S.s3 + .2); $("s3line").style.width = (eo(pr(t, A.s3a, A.s3c + 1)) * 1600) + "px";
+  pop("s3a", t, A.s3a); pop("s3b", t, A.s3b); pop("s3c", t, A.s3c);
+  // ---- S4
+  scene("s4", t, S.s4, S.s5 + .1);
+  pop("s4h", t, S.s4 + .2); pop("s4v", t, A.s4v); { const p = pr(t, A.s4x, A.s4x + .6); $("s4boom").setAttribute("opacity", p > 0 && p < 1 ? Math.sin(p * Math.PI) : 0); if (REC) rec(A.s4x, "thud"); }
+  { const els = $("s4f").querySelectorAll(".f"); els.forEach((e, i) => { const p = pr(t, A.s4f + i * .12, A.s4f + .3 + i * .12); const g = eo(pr(t, A.s4d + i * .15, A.s4d + .7 + i * .15));
+      e.style.opacity = eo(p) * (1 - .8 * g); e.style.filter = g > 0 ? `blur(${g * 4}px)` : "none"; e.style.transform = `translateY(${(1 - eb(p)) * 30}px)`; }); }
+  pop("s4t", t, A.s4f); slam("s4s", t, A.s4p, -4); pop("s4n", t, A.s4n);
+  // ---- S5
+  scene("s5", t, S.s5, S.s6 + .1);
+  pop("s5h", t, S.s5 + .2); pop("q1", t, A.q1); pop("q2", t, A.q2); pop("q3", t, A.q3);
+  pop("s5n", t, A.s5n); count("s5a", t, A.s5n + .3, A.s5n + 1.1, 2000); count("s5b", t, A.s5n + .9, A.s5n + 1.6, 2500); figAnim("s5f", t, A.s5n + .2, .05);
+  pop("e1", t, A.e1); pop("e2", t, A.e1 + .6); pop("e3", t, A.e1 + 1.2);
+  pop("s5st", t, A.st); slideX("s5p1", t, A.p1, 80); slideX("s5p2", t, A.p2, 80);
+  // ---- S6
+  scene("s6", t, S.s6, S.s7 + .1);
+  pop("s6h", t, S.s6 + .2);
+  pop("c1", t, A.c1); pop("c1a", t, A.c1a); pop("c1b", t, A.c1a + .8); pop("c1c", t, A.c1c); pop("c1d", t, A.c1d); pop("c1e", t, A.c1e);
+  pop("c2", t, A.c2); figAnim("c2f", t, A.c2a, .04); pop("c2a", t, A.c2a); pop("c2b", t, A.c2b); pop("c2c", t, A.c2c); pop("c2d", t, A.c2d);
+  pop("c3", t, A.c3); pop("c3a", t, A.c3 + .8); pop("c3b", t, A.c3b); pop("c3c", t, A.c3c); slam("c3d", t, A.c3d, -4);
+  ["c1", "c2", "c3"].forEach((id, i) => { const act = [A.c1, A.c2, A.c3][i], nxt = [A.c2, A.c3, S.s7][i]; const on = t >= act - .2 && t < nxt; $(id).style.borderColor = on ? "rgba(255,210,90,.8)" : "rgba(245,242,234,.14)"; $(id).style.boxShadow = on ? "0 0 40px rgba(255,210,90,.18)" : "none"; });
+  // ---- S7
+  scene("s7", t, S.s7, S.s8 + .1);
+  pop("s7t", t, S.s7 + .1); slideX("s7a", t, A.s7a); slideX("s7b", t, A.s7b, 120);
+  for (let i = 0; i < 4; i++) pop("mi" + i, t, A.s7b + 1.6 + i * .9);
+  pop("s7w", t, A.s7w); pop("s7e", t, A.s7e);
+  // ---- S8
+  scene("s8", t, S.s8, AEND + .3);
+  figAnim("s8f", t, S.s8 + .3, .08); pop("s8a", t, A.s8a); pop("s8b", t, A.s8b);
+  scene("s9", t, AEND + .2, DUR + 1, .4);
+  chrome(t, AEND);
+  extras(t);
+  capas(t);
+};
+buildCues();
+</script></body></html>

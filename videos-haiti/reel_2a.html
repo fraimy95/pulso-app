@@ -1,0 +1,137 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css"><script src="geo.js"></script><script src="words_2a.js"></script><script src="common.js"></script>
+<style>
+#mapShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,30,.92) 0%,rgba(10,15,30,.4) 36%,rgba(10,15,30,0) 50%,rgba(10,15,30,.15) 66%,rgba(10,15,30,.95) 84%);opacity:0}
+.deplbl{position:absolute;font-size:34px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;transform:translate(-50%,-50%);opacity:0;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+</style></head><body><div id="stage">
+<div id="mapShade"></div>
+<div id="pin" class="abs" style="opacity:0"><div style="display:flex;flex-direction:column;align-items:center">
+  <div style="background:var(--ink);color:var(--bg);font-weight:800;font-size:30px;padding:10px 20px;border-radius:14px;white-space:nowrap">Puerto Príncipe</div>
+  <div style="width:4px;height:44px;background:var(--ink)"></div><div style="width:24px;height:24px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 10px rgba(255,210,90,.3)"></div></div></div>
+<div class="deplbl" id="dl1">Oeste</div><div class="deplbl" id="dl2">Artibonite</div><div class="deplbl" id="dl3">Centro</div>
+
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1a" style="left:80px;top:300px">¿Quién</div>
+  <div class="abs h-xl" id="s1b" style="left:80px;top:450px">controla</div>
+  <div class="abs h-xl" id="s1c" style="left:80px;top:600px;color:var(--gold);font-size:120px">la capital?</div>
+  <div class="abs pill red" id="s1d" style="left:80px;top:1150px">${0}</div>
+</div>
+<div class="scene" id="s2">
+  <svg class="abs" id="s2g" style="left:240px;top:300px" width="600" height="600" viewBox="0 0 600 600">
+    <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="56"/>
+    <circle id="s2a" cx="300" cy="300" r="250" fill="none" stroke="#E2333F" stroke-width="56" stroke-dasharray="1571" stroke-dashoffset="1571" transform="rotate(-90 300 300)"/>
+    <circle id="s2b" cx="300" cy="300" r="250" fill="none" stroke="#E2333F" stroke-opacity=".45" stroke-width="56" stroke-dasharray="0 1571" transform="rotate(-90 300 300)"/>
+  </svg>
+  <div class="abs big" id="s2n" style="left:0;width:1080px;text-align:center;top:540px;font-size:100px"><span id="s2v">0</span>%</div>
+  <div class="abs lbl" id="s2l" style="left:0;width:1080px;text-align:center;top:700px;color:var(--ink)">de la capital</div>
+  <div class="abs lbl" id="s2l2" style="left:0;width:1080px;text-align:center;top:960px;font-size:34px;line-height:1.4">bajo control de<br><span style="color:var(--ink)">bandas armadas</span></div>
+</div>
+<div class="scene" id="s3">
+  <div class="abs hdr" id="s3h">Expansión territorial</div>
+  <div class="abs" id="s3c" style="left:80px;top:1140px;display:flex;align-items:baseline;gap:20px"><span class="big" style="font-size:110px;color:var(--red)">3</span><span style="font-size:44px;font-weight:800">de 10 departamentos</span></div>
+</div>
+<div class="scene" id="s4">
+  <div class="abs pill" id="s4s" style="left:80px;top:300px;font-size:28px">UNICEF · estimaciones académicas 2025–2026</div>
+  <div class="abs card" id="s4d1" style="left:80px;top:420px;width:440px;height:260px;padding:34px"><div style="margin-bottom:18px">__doc</div><div style="font-size:40px;font-weight:800;line-height:1.1">Estudios<br>académicos</div></div>
+  <div class="abs card" id="s4d2" style="left:560px;top:420px;width:440px;height:260px;padding:34px"><div style="margin-bottom:18px">__users</div><div style="font-size:40px;font-weight:800;line-height:1.1">UNICEF</div></div>
+  <div class="abs" id="s4y" style="left:80px;top:720px;display:flex;gap:20px"><span class="pill gold" id="s4y1">2025</span><span class="pill gold" id="s4y2">2026</span></div>
+  <div class="abs big" id="s4t" style="left:80px;top:400px;font-size:96px">Millones de<br>personas</div>
+  <div class="abs figs" id="s4f" style="left:70px;top:640px;width:960px"></div>
+  <div class="abs" id="s4zone" style="left:60px;top:630px;width:0;height:330px;background:rgba(226,51,63,.22);border-right:6px solid var(--red);border-radius:16px"></div>
+  <div class="abs lbl" id="s4zl" style="left:80px;top:985px;color:#FF8A92">Territorios dominados por las bandas</div>
+  <div class="abs pill red" id="s4p1" style="left:80px;top:1060px">__coin Extorsiones</div>
+  <div class="abs pill red" id="s4p2" style="left:470px;top:1060px">__block Bloqueos</div>
+  <div class="abs pill red" id="s4p3" style="left:80px;top:1170px">__route Control de rutas clave</div>
+</div>
+<div class="scene" id="s5">
+  <div class="abs hdr" id="s5h">Saldo humano · ene–sep 2026</div>
+  <div class="abs pill" id="s5s" style="left:80px;top:370px;font-size:28px">Fuente: BINUH (ONU)</div>
+  <div class="abs figs" id="s5f" style="left:70px;top:470px;width:960px"></div>
+  <div class="abs" id="s5a" style="left:80px;top:1010px"><span class="big" style="font-size:76px;color:var(--red)" id="s5av">0</span><span style="font-size:36px;font-weight:700"> muertes</span></div>
+  <div class="abs" id="s5b" style="left:560px;top:1010px"><span class="big" style="font-size:76px;color:#FF9F43" id="s5bv">0</span><span style="font-size:36px;font-weight:700"> heridos</span></div>
+  <div class="abs legend" id="s5lg" style="left:80px;top:1110px">${0}</div>
+  <div class="abs stamp" id="s5t" style="left:230px;top:620px;font-size:70px">+6.000 víctimas</div>
+</div>
+<div class="scene" id="s6">
+  <div class="abs hdr" id="s6h">El impacto en la niñez</div>
+  <div class="abs" id="s6kid" style="left:484px;top:380px"></div>
+  <div class="abs figs" id="s6f" style="left:110px;top:400px;width:880px;justify-content:center"></div>
+  <div class="abs big" id="s6p" style="left:0;width:1080px;text-align:center;top:690px;font-size:150px;color:var(--gold)">30–50 %</div>
+  <div class="abs lbl" id="s6pl" style="left:0;width:1080px;text-align:center;top:850px;color:var(--ink);font-size:34px">de los integrantes de las bandas<br>son menores de edad</div>
+  <div class="abs" id="s6bars" style="left:80px;top:960px;width:920px;height:280px">
+    <div class="abs lbl" style="left:0;top:0">Reclutamiento infantil</div>
+    <div class="abs" style="left:0;top:60px;display:flex;align-items:center;gap:20px"><span class="lbl" style="width:230px">Año previo</span><div id="s6b1" style="height:56px;width:0;background:var(--mut);border-radius:12px"></div></div>
+    <div class="abs" style="left:0;top:140px;display:flex;align-items:center;gap:20px"><span class="lbl" style="width:230px;color:var(--ink)">2025</span><div id="s6b2" style="height:56px;width:0;background:var(--red);border-radius:12px"></div><span class="big" id="s6b2l" style="white-space:nowrap;font-size:60px;color:var(--red);opacity:0">+200 %</span></div>
+  </div>
+</div>
+<div class="scene" id="s8" style="height:1920px">
+  <div class="abs" style="left:80px;top:300px;font-size:36px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs" style="left:80px;top:360px;font-size:100px;font-weight:900;line-height:1.02;letter-spacing:-.03em">Parte siguiente:<br><span style="color:var(--gold)">la misión de<br>la ONU (GSF)</span></div>
+  <div class="abs" style="left:80px;top:1440px;font-size:30px;color:var(--mut);font-weight:500;line-height:1.5">Fuentes: BINUH, UNICEF, ACAPS, OCHA.<br>Datos a noviembre de 2026.</div>
+</div>
+</div>
+<script>
+const AEND = 67.0, DUR = 70.0;
+KEYRE = /^(Viv|Ansanm|Puerto|Príncipe|Oeste|Artibonite|Centro|millones|BINUH|niñez|menores)$/i;
+chromeInit("Seguridad");
+// fill dynamic bits
+$("s1d").innerHTML = icon("users", 40) + " Coaliciones como Viv Ansanm";
+["s4p1:coin", "s4p2:block", "s4p3:route"].forEach(x => { const [id, ic] = x.split(":"); $(id).innerHTML = $(id).innerHTML.replace("__" + ic, icon(ic, 40)); });
+$("s5lg").innerHTML = fig("man", "#8D95AB", 40) + " = 100 personas";
+$("s4f").innerHTML = figRow(36, ["man", "woman", "child", "man", "woman", "man", "child", "woman", "man"], "#8D95AB", 92, 14);
+$("s5f").innerHTML = figRow(42, "man", "#E2333F", 64, 8) + figRow(19, "man", "#FF9F43", 64, 8);
+$("s4d1").innerHTML = $("s4d1").innerHTML.replace("__doc", icon("doc", 56)); $("s4d2").innerHTML = $("s4d2").innerHTML.replace("__users", icon("users", 56));
+$("s6kid").innerHTML = fig("child", "#FFD25A", 280);
+$("s6f").innerHTML = figRow(10, "man", "#8D95AB", 150, 22);
+const pap = GEO.pap, dOu = GEO.hti.find(d => d.name === "Ouest"), dAr = GEO.hti.find(d => d.name === "L'Artibonite"), dCe = GEO.hti.find(d => d.name === "Centre");
+window.render = function (t) {
+  // ---- map: hook zoom -> PAP -> departments
+  const mapOn = cl(1 - pr(t, 15.4, 15.9));
+  $("map").style.opacity = mapOn; $("mapShade").style.opacity = mapOn;
+  if (t < 5) { const p = eio(pr(t, 0, 4.6)); cam(lerp(-20, -40, p), lerp(80, -10, p), lerpLog(3600, 560, p), .66); }
+  else if (t < 10.8) { const p = eio(pr(t, 5, 6.2)); cam(lerp(-40, pap[0], p), lerp(-10, pap[1], p), lerpLog(560, 150, p), .55); }
+  else { const p = eio(pr(t, 10.8, 12.2)); cam(lerp(pap[0], -40, p), lerp(pap[1], 0, p), lerpLog(150, 420, p), .48); }
+  GEO.hti.forEach(d => { const e = dep(d.name); let f = "#3A2530";
+    if (d.name === "Ouest" && t > 13.3) f = `rgba(226,51,63,${.9 * eo(pr(t, 13.3, 13.7))})`;
+    if (d.name === "L'Artibonite" && t > 13.9) f = `rgba(226,51,63,${.9 * eo(pr(t, 13.9, 14.3))})`;
+    if (d.name === "Centre" && t > 14.8) f = `rgba(226,51,63,${.9 * eo(pr(t, 14.8, 15.2))})`;
+    if (t < 5) f = `rgba(226,51,63,${.7 + .3 * Math.sin(t * 6)})`;
+    e.setAttribute("fill", f); });
+  [["dl1", dOu, 13.3], ["dl2", dAr, 13.9], ["dl3", dCe, 14.8]].forEach(([id, d, a]) => { placeAt(id, d.cx, d.cy); $(id).style.opacity = eo(pr(t, a, a + .3)) * mapOn; });
+  { placeAt("pin", pap[0], pap[1]); const p = pr(t, 9.7, 10.0); $("pin").style.opacity = (p > 0 ? 1 : 0) * cl(1 - pr(t, 15.4, 15.8)); $("pin").style.transform = `translate(-50%,calc(-100% + 12px - ${(1 - eb(p)) * 60}px))`; }
+  // ---- scenes
+  scene("s1", t, -1, 5.0, .3);
+  [["s1a", 0], ["s1b", .35], ["s1c", .75]].forEach(([id, a]) => { const p = pr(t, a - .2, a + .3); $(id).style.opacity = id === "s1a" ? Math.max(.4, eo(p)) : eo(p); $(id).style.transform = `translateX(${(1 - eo(p)) * -80}px)`; });
+  pop("s1d", t, 3.9);
+  scene("s2", t, 5.0, 10.9);
+  { const a = eo(pr(t, 6.4, 7.3)) * .8, b = eo(pr(t, 7.8, 8.6)) * .1; $("s2a").setAttribute("stroke-dashoffset", 1571 * (1 - a));
+    $("s2b").setAttribute("stroke-dasharray", `${1571 * b} 1571`); $("s2b").setAttribute("stroke-dashoffset", -1571 * .8);
+    $("s2v").textContent = t < 7.8 ? Math.round(a * 100) : "80–" + Math.round(80 + b * 100); }
+  pop("s2g", t, 5.1, .5, 0); pop("s2n", t, 6.4); pop("s2l", t, 8.8); pop("s2l2", t, 9.1);
+  scene("s3", t, 10.8, 15.6); pop("s3h", t, 11.0); zoomIn("s3c", t, 14.8);
+  scene("s4", t, 15.6, 30.9);
+  pop("s4s", t, 15.8); pop("s4d1", t, 16.2); pop("s4d2", t, 17.9); pop("s4y1", t, 19.3); pop("s4y2", t, 20.7);
+  ["s4d1","s4d2","s4y"].forEach(id => { const o = 1 - pr(t, 21.6, 21.9); $(id).style.opacity = (id==="s4y"?1:+$(id).style.opacity) * o; if (o <= 0) $(id).style.display = "none"; else $(id).style.display = "block"; });
+  $("s4y").style.display = t > 21.9 ? "none" : "flex"; pop("s4t", t, 22.0, .45, 40);
+  figAnim("s4f", t, 22.1, .04, (i, tt) => { const z = eo(pr(tt, 24.1, 25.4)); return (i % 12) / 12 < z ? "#E2333F" : "#8D95AB"; });
+  $("s4zone").style.width = (eo(pr(t, 24.1, 25.4)) * 960) + "px"; $("s4zone").style.opacity = pr(t, 24.1, 24.3); pop("s4zl", t, 25.0);
+  slideX("s4p1", t, 26.4); slideX("s4p2", t, 27.3, 120); slideX("s4p3", t, 29.4);
+  scene("s5", t, 31.0, 49.6);
+  pop("s5h", t, 31.2); pop("s5s", t, 36.2);
+  figAnim("s5f", t, 40.3, .045); $("s5f").querySelectorAll(".f").forEach((e, i) => { if (i >= 42) { const p = pr(t, 43.8 + (i - 42) * .05, 44.1 + (i - 42) * .05); e.style.opacity = eo(p); } });
+  pop("s5a", t, 40.3); count("s5av", t, 40.3, 42.2, 4217); pop("s5b", t, 43.8); count("s5bv", t, 43.8, 45.0, 1860); pop("s5lg", t, 41.0);
+  slam("s5t", t, 46.7, -6);
+  scene("s6", t, 49.6, 67.2);
+  pop("s6h", t, 49.8); { const p = pr(t, 50.2, 50.7); const k = $("s6kid"); k.style.opacity = eo(p) * (1 - pr(t, 54.6, 55.0)); k.style.transform = `scale(${.8 + .2 * eb(p)})`; k.style.filter = `drop-shadow(0 0 ${30 + 10 * Math.sin(t * 3)}px rgba(255,210,90,.5))`; }
+  { const els = $("s6f").querySelectorAll(".f"); els.forEach((e, i) => { const p = pr(t, 54.9 + i * .03, 55.2 + i * .03); e.style.opacity = eo(p) * (1 - pr(t, 60.9, 61.2));
+      const red = (i < 3 && t > 55.5 + i * .12) || (i >= 3 && i < 5 && t > 56.7 + (i - 3) * .12); const c = red ? (i < 3 ? "#FFD25A" : "rgba(255,210,90,.55)") : "#8D95AB";
+      e.innerHTML = fig(red ? "child" : "man", c, 150); }); }
+  pop("s6p", t, 55.5); $("s6p").style.opacity = eo(pr(t, 55.5, 55.9)) * (1 - pr(t, 60.9, 61.2)); $("s6p").textContent = t < 56.7 ? "30 %" : "30–50 %";
+  pop("s6pl", t, 59.8); $("s6pl").style.opacity = eo(pr(t, 59.8, 60.2)) * (1 - pr(t, 60.9, 61.2));
+  { const p = pr(t, 61.0, 61.4); $("s6bars").style.opacity = eo(p); $("s6bars").style.top = (960 - 520 * eo(pr(t, 60.9, 61.4))) + "px";
+    $("s6b1").style.width = (eo(pr(t, 61.6, 62.1)) * 170) + "px"; $("s6b2").style.width = (eo(pr(t, 62.2, 63.0)) * 510) + "px"; $("s6b2l").style.opacity = pr(t, 62.8, 63.0); }
+  scene("s8", t, AEND + .2, DUR + 1, .4);
+  chrome(t, AEND);
+};
+buildCues();
+</script></body></html>

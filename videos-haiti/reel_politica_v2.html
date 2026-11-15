@@ -1,0 +1,304 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<script src="geo.js"></script>
+<style>
+:root{--bg:#0A0F1E;--blue:#3B63FF;--red:#E2333F;--ink:#F5F2EA;--mut:#8D95AB;--line:rgba(245,242,234,.14);--gold:#FFD25A;--card:#141C36}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:"Inter Display","Inter",sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute}
+#bgGlow{position:absolute;inset:-200px;background:radial-gradient(700px 700px at 30% 30%,rgba(59,99,255,.28),transparent 70%),radial-gradient(600px 600px at 75% 70%,rgba(226,51,63,.18),transparent 70%)}
+#grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.22;mask-image:radial-gradient(circle at 50% 45%,#000 30%,transparent 75%)}
+#map{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+#mapShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,30,.92) 0%,rgba(10,15,30,.55) 38%,rgba(10,15,30,0) 55%,rgba(10,15,30,.2) 68%,rgba(10,15,30,.95) 85%);opacity:0}
+.mlabel{position:absolute;font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transform:translate(-50%,-50%)}
+#flag{left:0;top:0;width:100%;height:10px;display:flex}#flag i{flex:1}
+#top{left:70px;top:120px;display:flex;gap:18px;align-items:center;font-weight:700;font-size:30px;letter-spacing:.14em;text-transform:uppercase;z-index:5}
+.chip{padding:12px 22px;border-radius:999px;border:2px solid var(--line);background:rgba(10,15,30,.6)}
+.chip.red{background:var(--red);border-color:var(--red)}
+#prog{left:70px;right:70px;top:210px;height:6px;border-radius:3px;background:rgba(255,255,255,.1);z-index:5}
+#progIn{height:100%;width:0;border-radius:3px;background:var(--ink)}
+.scene{position:absolute;left:0;top:0;width:1080px;height:1320px;opacity:0;transform-origin:50% 55%}
+.h-xl{font-weight:900;font-size:150px;line-height:1;letter-spacing:-.03em;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.hdr{left:80px;top:300px;font-size:40px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase}
+.card{background:linear-gradient(180deg,#18223F,#111830);border:2px solid var(--line);border-radius:36px}
+.src{font-size:24px;color:var(--mut);font-weight:500}
+#capBg{left:0;right:0;top:1300px;height:380px;background:linear-gradient(180deg,transparent,rgba(10,15,30,.75) 30%,rgba(10,15,30,.75) 75%,transparent);z-index:4}
+#cap{left:70px;right:70px;top:1360px;height:260px;display:flex;align-items:flex-start;justify-content:center;text-align:center;font-weight:800;font-size:66px;line-height:1.18;letter-spacing:-.01em;z-index:5}
+#cap span{display:inline-block;margin:0 .13em}
+.lbl{font-size:30px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.stamp{border:8px solid var(--red);color:var(--red);font-weight:900;border-radius:18px;padding:14px 30px;letter-spacing:.04em;text-transform:uppercase;background:rgba(10,15,30,.88)}
+.goal{display:flex;align-items:center;gap:30px;font-size:46px;font-weight:800;padding:22px 34px 22px 22px;border-radius:28px;background:rgba(59,99,255,.14);border:2px solid rgba(59,99,255,.55)}
+.ico{width:96px;height:96px;border-radius:22px;background:rgba(59,99,255,.25);display:flex;align-items:center;justify-content:center;flex:none}
+.node{left:150px;display:flex;align-items:flex-start;gap:40px}
+.dot{width:46px;height:46px;border-radius:50%;background:var(--bg);border:8px solid var(--ink);flex:none;margin-top:14px}
+.ntext b{display:block;font-size:56px;font-weight:800;position:relative}
+.ntext small{display:block;font-size:34px;color:var(--mut);font-weight:600}
+.strike{position:absolute;left:-6px;top:52%;height:8px;background:var(--red);width:0;border-radius:4px}
+.plabel{position:absolute;width:380px;text-align:center;font-size:40px;font-weight:800;line-height:1.1}
+</style></head>
+<body><div id="stage">
+<div id="bgGlow"></div><div id="grid"></div>
+<svg id="map" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><g id="mapC"></g><g id="mapH"></g></svg>
+<div id="mapShade"></div>
+<div id="mlHTI" class="mlabel" style="font-size:44px;opacity:0">Haití</div>
+<div id="mlDOM" class="mlabel" style="font-size:30px;color:var(--mut);opacity:0">Rep. Dominicana</div>
+<div id="pin" class="abs" style="opacity:0;transform:translate(-50%,-100%)">
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div style="background:var(--ink);color:var(--bg);font-weight:800;font-size:30px;padding:10px 20px;border-radius:14px;white-space:nowrap">Puerto Príncipe</div>
+    <div style="width:4px;height:50px;background:var(--ink)"></div>
+    <div id="pinDot" style="width:26px;height:26px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 10px rgba(255,210,90,.3)"></div>
+  </div></div>
+<div id="flag" class="abs"><i style="background:var(--blue)"></i><i style="background:var(--red)"></i></div>
+<div id="top" class="abs"><span class="chip red">Haití 2026</span><span class="chip">Crisis política</span></div>
+<div id="prog" class="abs"><div id="progIn"></div></div>
+
+<!-- S1 hook -->
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1a" style="left:80px;top:320px">¿Y quién</div>
+  <div class="abs h-xl" id="s1b" style="left:80px;top:480px">gobierna</div>
+  <div class="abs h-xl" id="s1c" style="left:80px;top:640px;color:var(--gold)">Haití hoy?</div>
+</div>
+
+<!-- S2 CPT -->
+<div class="scene" id="s2">
+  <div class="abs" id="s2year" style="left:80px;top:290px;font-size:220px;font-weight:900;letter-spacing:-.04em;-webkit-text-stroke:4px var(--ink);color:transparent;line-height:1">2024</div>
+  <div class="abs lbl" id="s2abr" style="left:700px;top:400px;color:var(--ink);font-size:44px">Abril</div>
+  <div class="abs card" id="s2card" style="left:80px;top:560px;width:920px;height:330px;padding:44px 50px">
+    <div id="s2badge" style="display:inline-block;background:var(--red);font-weight:900;font-size:44px;padding:8px 24px;border-radius:14px;margin-bottom:22px">CPT</div>
+    <div style="font-size:54px;font-weight:800;line-height:1.08">Consejo<br>Presidencial<br>de Transición</div>
+    <svg id="s2seats" class="abs" style="right:40px;top:70px" width="340" height="200" viewBox="0 0 340 200"></svg>
+    
+  </div>
+  <div class="abs goal" id="s2g1" style="left:80px;top:930px"><div class="ico"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>Pacificar el país</div>
+  <div class="abs goal" id="s2g2" style="left:80px;top:1080px"><div class="ico"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V4h8v6"/><path d="M8 14h8"/></svg></div>Organizar elecciones</div>
+</div>
+
+<!-- S3 mandate expired -->
+<div class="scene" id="s3">
+  <div class="abs lbl" id="s3l" style="left:80px;top:300px">Mandato del CPT</div>
+  <div class="abs" id="s3bar" style="left:80px;top:360px;width:920px;height:40px;border-radius:20px;background:rgba(255,255,255,.08);overflow:hidden"><div id="s3fill" style="height:100%;width:0;background:var(--blue);border-radius:20px"></div></div>
+  <div class="abs src" style="left:80px;top:415px;font-size:28px">abr. 2024</div>
+  <div class="abs src" id="s3end" style="right:80px;top:415px;font-size:28px">7 feb. 2026</div>
+  <div class="abs card" id="s3cal" style="left:260px;top:500px;width:560px;height:540px;overflow:hidden;background:#F5F2EA;color:#0A0F1E">
+    <div id="s3mon" style="background:var(--blue);color:#fff;font-size:44px;font-weight:800;text-align:center;padding:28px 0;letter-spacing:.08em">ABRIL 2024</div>
+    <div id="s3day" style="font-size:300px;font-weight:900;text-align:center;line-height:1.3;letter-spacing:-.04em">7</div>
+  </div>
+  <div class="abs stamp" id="s3stamp" style="left:150px;top:730px;font-size:66px">Mandato expirado</div>
+  <div class="abs" id="s3ballot" style="left:80px;top:1080px;display:flex;align-items:center;gap:30px">
+    <svg width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="#F5F2EA" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V4h8v6"/><path d="M8 14h8"/><path id="s3x" d="M2 2l20 20M22 2L2 22" stroke="#E2333F" stroke-width="2.6" stroke-dasharray="60" stroke-dashoffset="60"/></svg>
+    <div><div style="font-size:72px;font-weight:900;line-height:1">0 elecciones</div><div class="lbl" style="margin-top:8px">durante la transición</div></div>
+  </div>
+</div>
+
+<!-- S4 state as a building -->
+<div class="scene" id="s4">
+  <div class="abs hdr" id="s4h">Los pilares del Estado</div>
+  <svg id="s4svg" class="abs" style="left:0;top:360px" width="1080" height="760" viewBox="0 0 1080 760">
+    <g id="s4roof"><path d="M120 190 L540 40 L960 190 Z" fill="#1B2547" stroke="#F5F2EA" stroke-width="4" stroke-linejoin="round"/><rect x="100" y="190" width="880" height="40" rx="6" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/></g>
+    <g id="colP"><rect x="160" y="250" width="200" height="380" rx="10" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/><text x="260" y="440" transform="rotate(-90 260 440)" text-anchor="middle" dominant-baseline="middle" fill="#F5F2EA" font-size="44" font-weight="800" letter-spacing="4">PRESIDENCIA</text></g>
+    <g id="colE"><rect x="440" y="250" width="200" height="380" rx="10" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/><text x="540" y="440" transform="rotate(-90 540 440)" text-anchor="middle" dominant-baseline="middle" fill="#F5F2EA" font-size="44" font-weight="800" letter-spacing="4">EJECUTIVO</text></g>
+    <g id="colL"><rect x="720" y="250" width="200" height="380" rx="10" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/><text x="820" y="440" transform="rotate(-90 820 440)" text-anchor="middle" dominant-baseline="middle" fill="#F5F2EA" font-size="44" font-weight="800" letter-spacing="4">PARLAMENTO</text></g>
+    <rect x="80" y="650" width="920" height="34" rx="6" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/>
+    <rect x="40" y="700" width="1000" height="34" rx="6" fill="#1B2547" stroke="#F5F2EA" stroke-width="4"/>
+  </svg>
+  <div class="abs stamp" id="s4vP" style="left:120px;top:690px;font-size:44px;padding:8px 18px;border-width:6px">Vacante</div>
+  <div class="abs stamp" id="s4vL" style="left:640px;top:690px;font-size:44px;padding:8px 18px;border-width:6px">Sin funciones</div>
+  <div class="abs card" id="s4pm" style="left:80px;top:1130px;width:920px;height:150px;display:flex;align-items:center;gap:30px;padding:0 34px;border-color:rgba(59,99,255,.7);background:linear-gradient(90deg,rgba(59,99,255,.3),rgba(59,99,255,.08))">
+    <svg width="96" height="96" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3B63FF"/><circle cx="12" cy="9" r="4" fill="#F5F2EA"/><path d="M4.5 20c1.5-3.5 4.3-5 7.5-5s6 1.5 7.5 5" fill="#F5F2EA"/></svg>
+    <div><div class="lbl" style="color:#AFC0FF;font-size:24px">Primer ministro · al frente del Ejecutivo</div><div id="s4name" style="font-size:58px;font-weight:900;white-space:nowrap">Alix Didier Fils-Aimé</div></div>
+  </div>
+</div>
+
+<!-- S5 electoral timeline -->
+<div class="scene" id="s5">
+  <div class="abs hdr" id="s5h">Calendario electoral</div>
+  <svg id="s5spin" class="abs" style="left:840px;top:250px" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#FFD25A" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4h-4"/></svg>
+  <div class="abs" id="s5again" style="left:0;width:1080px;text-align:center;top:620px;font-size:120px;font-weight:900;color:var(--gold);letter-spacing:-.02em">Una y otra vez</div>
+  <div class="abs" id="s5line" style="left:171px;top:500px;width:4px;height:0;background:var(--line)"></div>
+  <div class="abs node" id="s5n1" style="top:470px"><div class="dot"></div><div class="ntext"><b>Agosto 2026<span class="strike" id="s5x1"></span></b><small>Fecha prevista</small></div></div>
+  <div class="abs node" id="s5n2" style="top:680px"><div class="dot"></div><div class="ntext"><b>Diciembre 2026<span class="strike" id="s5x2"></span></b><small>Nueva fecha</small></div></div>
+  <div class="abs node" id="s5n3" style="top:890px"><div class="dot" style="border-color:var(--red)"></div><div class="ntext"><b style="color:#FF8A92">5 oct. 2026</b><small id="s5cep">El CEP aplaza los comicios</small><div class="stamp" id="s5stamp" style="display:inline-block;margin-top:14px;font-size:46px;padding:6px 22px;border-width:6px">Sin fecha</div></div></div>
+  <div class="abs" id="s5c1" style="left:80px;top:1120px"><div class="goal" style="font-size:30px;padding:14px 22px 14px 14px;gap:16px"><div class="ico" style="width:60px;height:60px;border-radius:14px"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h6"/></svg></div>Decreto<br>electoral</div></div>
+  <div class="abs" id="s5c2" style="left:540px;top:1120px"><div class="goal" style="font-size:30px;padding:14px 22px 14px 14px;gap:16px;background:rgba(226,51,63,.14);border-color:rgba(226,51,63,.6)"><div class="ico" style="width:60px;height:60px;border-radius:14px;background:rgba(226,51,63,.3)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M12 8v5M12 16.5v.5"/></svg></div>Falta de<br>seguridad</div></div>
+</div>
+
+<!-- S6 2016 -->
+<div class="scene" id="s6">
+  <div class="abs lbl" id="s6l" style="left:0;width:1080px;text-align:center;top:320px">Últimas elecciones generales</div>
+  <div class="abs" id="s6y" style="left:0;width:1080px;text-align:center;top:370px;font-size:300px;font-weight:900;letter-spacing:-.05em">2016</div>
+  <div class="abs" id="s6row" style="left:60px;top:760px;width:960px;display:flex;justify-content:space-between"></div>
+  <div class="abs" id="s6c" style="left:0;width:1080px;text-align:center;top:930px;font-size:130px;font-weight:900;line-height:1"><span id="s6n" style="color:var(--red)">0</span> años</div>
+  <div class="abs lbl" id="s6s" style="left:0;width:1080px;text-align:center;top:1090px;color:var(--ink);font-size:40px">sin votar</div>
+</div>
+
+<!-- S7 puzzle -->
+<div class="scene" id="s7">
+  <div class="abs hdr" id="s7h">Para una salida duradera</div>
+  <svg class="abs" style="left:0;top:0" width="1080" height="1320" viewBox="0 0 1080 1320"><g id="pz"></g></svg>
+  <div class="plabel" id="pl0">Seguridad</div><div class="plabel" id="pl1">Ayuda<br>financiada</div>
+  <div class="plabel" id="pl2">Derechos<br>humanos</div><div class="plabel" id="pl3" style="color:var(--gold)">Instituciones<br>legítimas</div>
+  <div class="abs" id="s7q" style="left:0;width:1080px;top:1230px;text-align:center;font-size:40px;font-weight:900;color:var(--gold);letter-spacing:.08em;text-transform:uppercase">La pieza que falta</div>
+</div>
+
+<!-- End card -->
+<div class="scene" id="s8" style="height:1920px">
+  <div class="abs" style="left:80px;top:300px;font-size:36px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs" style="left:80px;top:360px;font-size:104px;font-weight:900;line-height:1.02;letter-spacing:-.03em">Parte 2:<br><span style="color:var(--gold)">las bandas y<br>la misión GSF</span></div>
+  <div class="abs" style="left:80px;top:1440px;font-size:30px;color:var(--mut);font-weight:500;line-height:1.5">Fuentes: Consejo Electoral Provisional (CEP),<br>ONU / BINUH. Datos a noviembre de 2026.</div>
+</div>
+
+<div id="capBg" class="abs"></div>
+<div id="cap" class="abs"></div>
+</div>
+<script>
+const DUR=59.0;
+const P=[
+ [2.42,6.47,"En 2024 se creó un Consejo Presidencial de Transición,"],[6.76,7.70,"el CPT,"],
+ [8.05,11.44,"con la tarea de pacificar el país y organizar elecciones."],
+ [11.78,15.17,"Pero su mandato expiró el 7 de febrero de 2026"],[15.35,17.59,"sin que se lograra celebrar los comicios."],
+ [17.99,20.11,"Desde entonces, el primer ministro"],[20.25,21.76,"Alix Didier Fils-Aimé"],
+ [21.98,23.95,"quedó al frente del Poder Ejecutivo"],[24.13,26.86,"sin presidente ni Parlamento en funciones."],
+ [27.37,30.73,"El calendario electoral se ha postergado una y otra vez:"],
+ [31.11,34.16,"las elecciones previstas para agosto de 2026"],[34.34,35.60,"se movieron a diciembre"],
+ [35.85,37.40,"y, el 5 de octubre,"],[37.61,39.38,"el Consejo Electoral Provisional"],
+ [39.52,41.36,"las aplazó de forma indefinida"],[41.56,43.33,"tras ajustes al decreto electoral"],
+ [43.50,45.04,"y ante la falta de seguridad."],
+ [45.62,49.54,"Haití no celebra elecciones generales desde 2016,"],
+ [50.03,53.14,"y reconstruir instituciones legítimas sigue siendo"],[53.27,56.00,"la pieza que falta para cualquier solución duradera."],
+];
+const KEY=/^(2024|CPT|7|febrero|2026|Fils-Aimé|Ejecutivo|presidente|Parlamento|agosto|diciembre|5|octubre|indefinida|seguridad|2016|instituciones|legítimas|pieza)$/i;
+const phrases=P.map(([s,e,t])=>{const ws=t.split(" ");const tot=ws.reduce((a,w)=>a+w.length+1,0);let acc=s;return {s,e,words:ws.map(w=>{const d=(w.length+1)/tot*(e-s);const o={w,s:acc,e:acc+d};acc+=d;return o;})};});
+// sound cues [time, sfx]
+const CUES=[[0,"whoosh"],[0.02,"pop"],[0.45,"pop"],[0.95,"pop"],[1.55,"pop"],
+ [2.3,"whoosh"],[2.45,"pop"],[3.3,"pop"],...Array.from({length:9},(_,i)=>[3.6+i*.09,"tick"]),[6.8,"thud"],[8.9,"pop"],[10.0,"pop"],
+ [11.6,"whoosh"],...Array.from({length:11},(_,i)=>[11.85+i*.13,"tick"]),[13.35,"thud"],[15.4,"pop"],[15.6,"strike"],
+ [17.85,"whoosh"],[18.0,"pop"],[19.1,"pop"],[24.4,"thud"],[25.3,"thud"],
+ [27.2,"whoosh"],[27.5,"pop"],[31.1,"pop"],[34.3,"strike"],[34.45,"pop"],[36.0,"pop"],[39.6,"strike"],[40.3,"thud"],[41.6,"pop"],[43.5,"pop"],
+ [45.3,"whoosh"],[45.7,"thud"],...Array.from({length:10},(_,i)=>[47.05+i*.2,"tick"]),
+ [49.9,"whoosh"],[50.3,"pop"],[50.6,"pop"],[50.9,"pop"],[51.4,"pop"],[53.3,"tick"],[53.6,"tick"],
+ [56.3,"whoosh"]];
+window.CUES=CUES;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const pr=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eb=x=>{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+function pop(el,t,a,d=.45,dy=50){const p=pr(t,a,a+d);el.style.opacity=eo(p);el.style.transform=`translateY(${(1-eo(p))*dy}px) scale(${.9+.1*eb(p)})`;}
+function slam(el,t,a,rot=-10){const p=pr(t,a,a+.28);el.style.opacity=p>0?1:0;el.style.transform=`rotate(${rot}deg) scale(${p>0?1+1.5*(1-eo(p)):2})`;}
+function scene(id,t,a,b,f=.35){const el=$(id);const vin=pr(t,a,a+f),vout=pr(t,b-f,b);const v=Math.min(vin,1-vout);el.style.opacity=v;el.style.display=v<=0?"none":"block";
+  const drift=1+.025*pr(t,a,b);el.style.transform=`translateY(${(1-eo(vin))*60-eo(vout)*60}px) scale(${drift*(1+.05*(1-eo(vin)))})`;el.style.filter=vout>0?`blur(${vout*10}px)`:"none";return v;}
+// ---- map
+const NS="http://www.w3.org/2000/svg";
+GEO.countries.forEach(c=>{if(c.iso==="HTI")return;const p=document.createElementNS(NS,"path");p.setAttribute("d",c.d);
+  p.setAttribute("fill",c.iso==="DOM"?"#2A3560":"#1A2342");p.setAttribute("stroke","rgba(245,242,234,.25)");p.setAttribute("stroke-width","1");p.setAttribute("vector-effect","non-scaling-stroke");$("mapC").appendChild(p);});
+GEO.hti.forEach(h=>{const p=document.createElementNS(NS,"path");p.setAttribute("d",h.d);p.setAttribute("fill","#E2333F");p.setAttribute("stroke","#0A0F1E");p.setAttribute("stroke-width","1.2");p.setAttribute("vector-effect","non-scaling-stroke");$("mapH").appendChild(p);});
+let CAM={x0:0,y0:0,w:1};
+function cam(cx,cy,w,fy){const h=w*1920/1080;CAM={x0:cx-w/2,y0:cy-fy*h,w};$("map").setAttribute("viewBox",`${CAM.x0} ${CAM.y0} ${w} ${h}`);}
+function scr(x,y){const s=1080/CAM.w;return [(x-CAM.x0)*s,(y-CAM.y0)*s];}
+function lerpLog(a,b,p){return Math.exp(Math.log(a)+(Math.log(b)-Math.log(a))*p);}
+// ---- council seats
+(()=>{const g=$("s2seats");for(let i=0;i<9;i++){const a=Math.PI*(1-i/8);const c=document.createElementNS(NS,"circle");c.setAttribute("cx",170+140*Math.cos(a));c.setAttribute("cy",175-140*Math.sin(a));c.setAttribute("r",24);c.setAttribute("fill","#3B63FF");c.id="seat"+i;g.appendChild(c);}
+ const r=document.createElementNS(NS,"rect");r.setAttribute("x",95);r.setAttribute("y",150);r.setAttribute("width",150);r.setAttribute("height",40);r.setAttribute("rx",10);r.setAttribute("fill","#F5F2EA");g.appendChild(r);})();
+// ---- years row
+const row=$("s6row");for(let y=2017;y<=2026;y++){const d=document.createElement("div");d.style.cssText="display:flex;flex-direction:column;align-items:center;gap:8px";
+ d.innerHTML=`<svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#8D95AB" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V4h8v6"/><path class="bx" d="M4 4l16 16M20 4L4 20" stroke="#E2333F" stroke-width="2.6" opacity="0"/></svg><div style="font-size:24px;font-weight:700;color:#8D95AB">'${String(y).slice(2)}</div>`;row.appendChild(d);}
+// ---- puzzle
+const S=380,OX=150,OY=410;
+function edge(x1,y1,x2,y2,tab){if(!tab)return `L${x2},${y2}`;const ax=x1+(x2-x1)*.35,ay=y1+(y2-y1)*.35,bx=x1+(x2-x1)*.65,by=y1+(y2-y1)*.65;return `L${ax},${ay} A${S*.15},${S*.15} 0 0 ${tab>0?1:0} ${bx},${by} L${x2},${y2}`;}
+function piece(t,r,b,l){return `M0,0 ${edge(0,0,S,0,t)} ${edge(S,0,S,S,r)} ${edge(S,S,0,S,b)} ${edge(0,S,0,0,l)} Z`;}
+const PZ=[{d:piece(0,1,-1,0),x:0,y:0,from:[-700,0]},{d:piece(0,0,1,-1),x:S,y:0,from:[700,0]},{d:piece(1,-1,0,0),x:0,y:S,from:[-700,300]},{d:piece(-1,0,0,1),x:S,y:S,from:[0,0]}];
+PZ.forEach((p,i)=>{const e=document.createElementNS(NS,"path");e.setAttribute("d",p.d);e.id="pz"+i;
+ if(i<3){e.setAttribute("fill",["#1F2B55","#22305E","#1B2650"][i]);e.setAttribute("stroke","#F5F2EA");e.setAttribute("stroke-width","4");}
+ else{e.setAttribute("fill","rgba(255,210,90,.08)");e.setAttribute("stroke","#FFD25A");e.setAttribute("stroke-width","5");e.setAttribute("stroke-dasharray","18 12");}
+ $("pz").appendChild(e);});
+// ---- captions
+let capKey="";
+function caption(t){let cur=null;
+  for(let i=0;i<phrases.length;i++){const p=phrases[i];const nx=phrases[i+1];if(t>=p.s-.05&&(t<(nx?Math.min(nx.s-.05,p.e+1.2):p.e+.6))){cur=p;break;}}
+  const cap=$("cap");if(!cur){cap.innerHTML="";capKey="";return;}
+  if(capKey!==cur.s){cap.innerHTML=`<div>${cur.words.map(w=>`<span>${w.w}</span>`).join("")}</div>`;capKey=cur.s;}
+  const spans=cap.querySelectorAll("span");const ap=eo(pr(t,cur.s-.05,cur.s+.2));
+  cap.firstChild.style.opacity=ap;cap.firstChild.style.transform=`translateY(${(1-ap)*24}px)`;
+  cur.words.forEach((w,i)=>{const sp=spans[i];const on=t>=w.s;const isKey=KEY.test(w.w.replace(/[,.:¿?]/g,""));
+    sp.style.color=on?(isKey?"var(--gold)":"var(--ink)"):"rgba(245,242,234,.35)";const k=pr(t,w.s,w.s+.15);sp.style.transform=`scale(${on&&k<1?1.06-.06*k:1})`;});}
+const MONTHS=["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+function shake(t,a,amp=14){const p=pr(t,a,a+.35);if(p<=0||p>=1)return "";const k=(1-p)*amp;return `translate(${Math.sin(t*90)*k}px,${Math.cos(t*77)*k}px)`;}
+window.render=function(t){
+  $("progIn").style.width=(cl(t/56)*100)+"%";
+  $("bgGlow").style.transform=`translate(${Math.sin(t*.25)*60}px,${Math.cos(t*.2)*50}px)`;
+  let stageShake=shake(t,13.35)||shake(t,40.3,10)||shake(t,45.7,8)||shake(t,24.4,8)||shake(t,25.3,8);
+  $("stage").style.transform=stageShake;
+  // ---- MAP (hook + end)
+  const mapIn=Math.min(1,1-pr(t,2.3,2.8))+pr(t,56.3,56.9);
+  $("map").style.opacity=cl(mapIn);$("mapShade").style.opacity=cl(mapIn);
+  if(t<56){const p=eio(pr(t,0,2.3));cam(-20+(-40+20)*p, 80+(-10-80)*p, lerpLog(3600,560,p), .62);}
+  else{const p=eio(pr(t,56.3,59));cam(-50,-10,lerpLog(700,520,p),.55);}
+  $("mapH").querySelectorAll("path").forEach((e,i)=>e.setAttribute("fill",t>56?`rgba(226,51,63,${.35+.5*Math.max(0,Math.sin((t-56.6)*4-i*.6))})`:`rgba(226,51,63,${.75+.25*Math.sin(t*6)})`));
+  {const [x,y]=scr(-130,-45);const l=$("mlHTI");l.style.left=x+"px";l.style.top=y+"px";l.style.opacity=cl(pr(t,1.0,1.4))*cl(1-pr(t,2.3,2.7))+cl(pr(t,56.8,57.2));}
+  {const [x,y]=scr(140,30);const l=$("mlDOM");l.style.left=x+"px";l.style.top=y+"px";l.style.opacity=cl(pr(t,1.2,1.6))*cl(1-pr(t,2.3,2.7))+cl(pr(t,56.8,57.2))*.8;}
+  {const [x,y]=scr(GEO.pap[0],GEO.pap[1]);const pn=$("pin");const p=pr(t,1.55,1.85);pn.style.left=x+"px";pn.style.top=y+"px";pn.style.opacity=(p>0?1:0)*cl(1-pr(t,2.3,2.6));pn.style.transform=`translate(-50%,calc(-100% + 13px - ${(1-eb(p))*60}px))`;}
+  // S1
+  scene("s1",t,-1,2.7,.3);
+  {const k=x=>Math.max(.35,x);[["s1a",0],["s1b",.45],["s1c",.95]].forEach(([id,a])=>{const el=$(id);const p=pr(t,a-.2,a+.3);el.style.opacity=t<.05&&id==="s1a"?1:eo(p);el.style.transform=`translateX(${(1-eo(p))*-80}px)`;});}
+  // S2
+  scene("s2",t,2.3,11.75);
+  {const p=eo(pr(t,2.4,3.1));$("s2year").style.opacity=p;$("s2year").style.transform=`translateX(${(1-p)*-80}px)`;}
+  pop($("s2abr"),t,2.7);pop($("s2card"),t,3.2,.5,80);
+  for(let i=0;i<9;i++){const c=$("seat"+i);const p=pr(t,3.6+i*.09,3.8+i*.09);c.setAttribute("r",24*eb(p));}
+  {const p=pr(t,6.76,7.0);$("s2badge").style.transform=`scale(${1+.35*Math.sin(Math.PI*p)})`;}
+  pop($("s2g1"),t,8.9,.45,0);pop($("s2g2"),t,10.0,.45,0);
+  ["s2g1","s2g2"].forEach((id,i)=>{const p=eo(pr(t,[8.9,10][i],[8.9,10][i]+.45));$(id).style.transform=`translateX(${(1-p)*-120}px)`;});
+  // S3
+  scene("s3",t,11.6,18.0);
+  pop($("s3l"),t,11.7);
+  {const p=pr(t,11.85,13.3);$("s3fill").style.width=(eio(p)*100)+"%";$("s3fill").style.background=p>=1?"var(--red)":"var(--blue)";
+   const m=Math.round(eio(p)*22);const mi=(3+m)%12,yr=2024+Math.floor((3+m)/12);$("s3mon").textContent=MONTHS[mi]+" "+yr;$("s3mon").style.background=p>=1?"var(--red)":"var(--blue)";
+   $("s3end").style.color=p>=1?"#FF8A92":"var(--mut)";}
+  pop($("s3cal"),t,11.75,.5,80);
+  slam($("s3stamp"),t,13.35,-12);
+  pop($("s3ballot"),t,15.4,.45,40);$("s3x").setAttribute("stroke-dashoffset",60*(1-eo(pr(t,15.6,15.95))));
+  // S4
+  scene("s4",t,17.85,27.25);
+  pop($("s4h"),t,18.0);pop($("s4svg"),t,18.0,.5,80);
+  {const pe=pr(t,19.1,19.5);$("colE").querySelector("rect").setAttribute("fill",pe>0?`rgba(59,99,255,${.35+.4*pe})`:"#1B2547");$("colE").style.filter=pe>0?`drop-shadow(0 0 ${30*pe}px rgba(59,99,255,.8))`:"none";}
+  [["colP",24.4,-1],["colL",25.3,1]].forEach(([id,a,dir])=>{const p=eo(pr(t,a,a+.5));const g=$(id);const r=g.querySelector("rect");
+    r.setAttribute("fill",p>0?`rgba(27,37,71,${1-p})`:"#1B2547");r.setAttribute("stroke",p>0?"#E2333F":"#F5F2EA");r.setAttribute("stroke-dasharray",p>0?"16 12":"none");
+    g.style.opacity=1-.55*p;g.style.transformOrigin=`${id==="colP"?260:820}px 630px`;g.style.transform=`translateY(${p*30}px) rotate(${dir*p*6}deg)`;});
+  {const p=eo(pr(t,25.6,26.4));$("s4roof").style.transformOrigin="540px 230px";$("s4roof").style.transform=`translateY(${p*14}px) rotate(${-p*2.5}deg)`;}
+  slam($("s4vP"),t,24.45,-8);slam($("s4vL"),t,25.35,6);
+  pop($("s4pm"),t,19.2,.5,60);{const p=pr(t,20.25,21.5);$("s4name").style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`;}
+  // S5
+  scene("s5",t,27.2,45.4);
+  pop($("s5h"),t,27.4);$("s5spin").style.opacity=eo(pr(t,27.4,27.8));$("s5spin").style.transform=`rotate(${(t-27.4)*240}deg)`;
+  pop($("s5again"),t,29.6);$("s5again").style.opacity=eo(pr(t,29.6,29.9))*(1-pr(t,30.9,31.2));
+  $("s5line").style.height=(eo(pr(t,30.6,31.4))*440)+"px";
+  pop($("s5n1"),t,31.1,.45,30);pop($("s5n2"),t,34.4,.45,30);pop($("s5n3"),t,36.0,.45,30);
+  $("s5x1").style.width=(eo(pr(t,34.3,34.7))*105)+"%";$("s5x2").style.width=(eo(pr(t,39.6,40.0))*105)+"%";
+  $("s5cep").style.color=t>37.6&&t<39.5?"var(--gold)":"var(--mut)";
+  slam($("s5stamp"),t,40.3,-4);
+  pop($("s5c1"),t,41.6,.45,40);pop($("s5c2"),t,43.5,.45,40);
+  // S6
+  scene("s6",t,45.3,50.1);
+  pop($("s6l"),t,45.5);{const p=pr(t,45.7,46.1);$("s6y").style.opacity=p>0?1:0;$("s6y").style.transform=`scale(${p>0?1+.8*(1-eo(p)):1.8})`;}
+  {const p=pr(t,47.0,49.0);$("s6n").textContent=Math.round(p*10);[...row.children].forEach((c,i)=>{const on=p*10>=i+.5;c.querySelector(".bx").setAttribute("opacity",on?1:0);c.querySelector("svg").setAttribute("stroke",on?"#F5F2EA":"#8D95AB");});
+   row.style.opacity=pr(t,46.6,47.0);}
+  pop($("s6c"),t,46.8);pop($("s6s"),t,48.0);
+  // S7
+  scene("s7",t,49.9,56.6);
+  pop($("s7h"),t,50.0);
+  PZ.forEach((p,i)=>{const e=$("pz"+i);const a=[50.3,50.6,50.9,51.4][i];const k=eo(pr(t,a,a+.5));let x=OX+p.x,y=OY+p.y;
+    if(i<3){x+=p.from[0]*(1-k);y+=p.from[1]*(1-k);e.style.opacity=k>0?1:0;}
+    else{const hover=t>53.3?eo(pr(t,53.3,53.8)):0;y+=-60*hover+Math.sin(t*3)*8*hover;x+=Math.sin(t*2.2)*10*hover;e.style.opacity=k;
+      e.style.filter=hover?`drop-shadow(0 0 ${24*(.6+.4*Math.sin(t*5))}px rgba(255,210,90,.6))`:"none";}
+    e.setAttribute("transform",`translate(${x},${y})`);
+    const l=$("pl"+i);l.style.left=(x)+"px";l.style.top=(y+S/2-45)+"px";l.style.opacity=e.style.opacity;});
+  pop($("s7q"),t,53.4);
+  // End
+  scene("s8",t,56.3,DUR+1,.4);
+  const capOn=1-pr(t,56.1,56.4);$("cap").style.opacity=capOn;$("capBg").style.opacity=capOn*(t<2.5?0:1);
+  if(t>=2.3)caption(t);else $("cap").innerHTML="";
+};
+render(0);
+</script></body></html>

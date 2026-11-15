@@ -1,0 +1,128 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css"><script src="geo.js"></script><script src="words_3a.js"></script><script src="common.js"></script>
+<style>
+#mapShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,30,.95) 0%,rgba(10,15,30,.6) 34%,rgba(10,15,30,0) 48%,rgba(10,15,30,.1) 62%,rgba(10,15,30,.95) 80%);opacity:0}
+.bar{height:70px;border-radius:14px;width:0}
+.deplbl{position:absolute;font-size:34px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;transform:translate(-50%,-50%);opacity:0;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+</style></head><body><div id="stage">
+<div id="mapShade"></div>
+<div class="deplbl" id="dlS">Sur</div><div class="deplbl" id="dlO">Oeste</div>
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1a" style="left:80px;top:300px;color:var(--gold)">1,5 millones</div>
+  <div class="abs h-xl" id="s1b" style="left:80px;top:440px;font-size:96px">de haitianos<br>fuera de su hogar</div>
+  <div class="abs" id="s1w" style="left:0;top:760px;width:1080px;height:300px;overflow:hidden"></div>
+  <div class="abs stamp" id="s1s" style="left:90px;top:1110px;font-size:52px">Emergencia sin precedentes</div>
+</div>
+<div class="scene" id="s2">
+  <div class="abs pill" id="s2o" style="left:80px;top:300px;font-size:28px">OIM · Matriz de Seguimiento de Desplazamiento</div>
+  <div class="abs lbl" id="s2t" style="left:80px;top:390px">Desplazados internos</div>
+  <div class="abs card" id="s2house" style="left:80px;top:520px;width:380px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px"><div id="s2hi"></div><div style="font-size:34px;font-weight:800;text-align:center">Obligados a dejar<br>sus hogares</div></div>
+  <div class="abs" id="s2L" style="left:110px;top:520px;width:320px;height:450px">
+    <div class="figs" id="s2Lf" style="position:absolute;left:30px;bottom:110px;width:300px"></div>
+    <div class="abs" style="left:0;bottom:0;width:320px;text-align:center"><div class="big" style="font-size:54px">310.000</div><div class="lbl" style="font-size:24px">inicios de 2024</div></div></div>
+  <div class="abs" id="s2R" style="left:520px;top:440px;width:500px;height:530px">
+    <div class="figs" id="s2Rf" style="position:absolute;left:0;bottom:110px;width:500px"></div>
+    <div class="abs" style="left:0;bottom:0;width:500px;text-align:center"><div class="big" style="font-size:54px;color:var(--gold)"><span id="s2v">0</span> M</div><div class="lbl" style="font-size:24px" id="s2rl">mediados de 2026</div></div></div>
+  <div class="abs big" id="s2x5" style="left:150px;top:540px;font-size:110px;color:var(--gold)">×5</div>
+  <div class="abs legend" id="s2lg" style="left:80px;top:1010px"></div>
+</div>
+<div class="scene" id="s3">
+  <div class="abs big" id="s3p" style="left:80px;top:330px;font-size:150px;color:var(--gold)">+50 %</div>
+  <div class="abs lbl" id="s3l" style="left:80px;top:490px;color:var(--ink);font-size:40px">son mujeres, niñas y niños</div>
+  <div class="abs figs" id="s3f" style="left:70px;top:640px;width:960px;justify-content:center"></div>
+</div>
+<div class="scene" id="s4">
+  <div class="abs" id="s4bowl" style="left:80px;top:310px;display:flex;align-items:center;gap:30px"><div id="s4bi"></div><div class="big" style="font-size:96px">El hambre</div></div>
+  <div class="abs" id="s4b1" style="left:80px;top:620px;width:920px"><div class="lbl" style="font-size:26px">Proyección de mitad de año</div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:10px"><div class="bar" id="s4b1b" style="background:repeating-linear-gradient(90deg,#8D95AB 0 10px,#6B7390 10px 20px)"></div><span class="big" style="font-size:52px;color:var(--mut)">3–3,5 M</span></div></div>
+  <div class="abs" id="s4b2" style="left:80px;top:800px;width:920px"><div class="lbl" style="font-size:26px;color:#FF8A92">Análisis oficial IPC · 28 oct. 2026</div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:10px"><div class="bar" id="s4b2b" style="background:var(--red)"></div><span class="big" style="font-size:60px;color:var(--red)"><span id="s4v">0</span> M</span></div></div>
+  <div class="abs pill red" id="s4ipc" style="left:80px;top:1010px">Clasificación IPC</div>
+  <div class="abs pill" id="s4d" style="left:470px;top:1010px">28 oct. 2026</div>
+</div>
+<div class="scene" id="s5">
+  <div class="abs" id="s5h" style="left:80px;top:300px;display:flex;align-items:baseline;gap:24px"><span class="big" style="font-size:140px;color:var(--red)"><span id="s5v">0</span>%</span><span style="font-size:40px;font-weight:800;line-height:1.1">de la población<br>analizada</span></div>
+  <div class="abs figs" id="s5f" style="left:60px;top:500px;width:960px"></div>
+  <div class="abs" id="s5ipc" style="left:80px;top:990px;width:920px">
+    <div style="display:flex;gap:6px;height:56px">${0}</div>
+    <div class="abs" id="s5br" style="left:${0}px;top:-10px;height:76px;border:5px solid var(--ink);border-radius:12px;width:0"></div>
+    <div class="lbl" style="margin-top:12px;font-size:24px">Escala IPC · fases 3 a 5 = crisis o emergencia</div></div>
+  <div class="abs pill gold" id="s5risk" style="left:80px;top:1160px">Riesgo 2027: 6,35 millones</div>
+</div>
+<div class="scene" id="s6">
+  <div class="abs" id="s6h" style="left:80px;top:300px;display:flex;align-items:center;gap:26px"><div id="s6ri"></div><div class="big" style="font-size:88px">Inundaciones</div></div>
+  <div class="abs lbl" id="s6m" style="left:80px;top:430px;color:var(--ink)">Octubre y noviembre 2026</div>
+  <div class="abs" id="s6n" style="left:80px;top:1060px"><div class="big" style="font-size:110px;color:#6FA8FF">≈<span id="s6v">0</span></div><div class="lbl">personas afectadas</div></div>
+  <div class="abs" id="s6drops" style="left:0;top:480px;width:1080px;height:500px;overflow:hidden"></div>
+</div>
+<div class="scene" id="s9" style="height:1920px">
+  <div class="abs" style="left:80px;top:300px;font-size:36px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs" style="left:80px;top:360px;font-size:100px;font-weight:900;line-height:1.02;letter-spacing:-.03em">Parte siguiente:<br><span style="color:var(--gold)">escuelas y<br>hospitales<br>al límite</span></div>
+  <div class="abs" style="left:80px;top:1440px;font-size:30px;color:var(--mut);font-weight:500;line-height:1.5">Fuentes: OIM (DTM), IPC, OCHA.<br>Datos a noviembre de 2026.</div>
+</div>
+</div>
+<script>
+const AEND = 70.5, DUR = 73.5;
+KEYRE = /^(cotidiana|emergencia|precedentes|millones|mujeres|niñas|niños|hambre|IPC|haitianos|inundaciones)$/i;
+chromeInit("Crisis humanitaria");
+$("s1w").innerHTML = Array.from({ length: 9 }, (_, i) => `<div class="abs wk" style="top:${20 + (i % 3) * 20}px">${fig(["walker", "walker", "walker"][i % 3], i % 3 === 1 ? "#FFD25A" : "#F5F2EA", 220 - (i % 3) * 30)}</div>`).join("");
+$("s2hi").innerHTML = icon("house", 150, "#F5F2EA", 1.6);
+$("s2Lf").innerHTML = figRow(3, "walker", "#8D95AB", 110, 14);
+$("s2Rf").innerHTML = figRow(15, "walker", "#FFD25A", 110, 14);
+$("s2lg").innerHTML = fig("walker", "#8D95AB", 40) + " = 100.000 personas";
+$("s3f").innerHTML = figRow(10, ["woman", "child", "man", "woman", "child", "man", "child", "woman", "man", "man"], "#8D95AB", 170, 12);
+$("s4bi").innerHTML = icon("bowl", 120, "#F5F2EA", 1.8);
+$("s5f").innerHTML = figRow(100, ["man", "woman", "child", "woman", "man"], "rgba(245,242,234,.25)", 72, 8).replace(/margin:0 4px 8px/g, "margin:0 8px 10px");
+const IPCC = ["#CDFACD", "#FAE61E", "#E67800", "#C80000", "#640000"];
+$("s5ipc").firstElementChild.innerHTML = IPCC.map((c, i) => `<div style="flex:1;background:${c};border-radius:8px;display:flex;align-items:center;justify-content:center;color:${i < 2 ? "#0A0F1E" : "#fff"};font-weight:900;font-size:26px">${i + 1}</div>`).join("");
+$("s5br").style.left = (2 * (920 + 6) / 5 - 8) + "px";
+$("s6ri").innerHTML = icon("rain", 110, "#6FA8FF", 1.8);
+$("s6drops").innerHTML = Array.from({ length: 40 }, (_, i) => `<div class="abs drop" style="left:${(i * 137) % 1080}px;width:4px;height:40px;border-radius:2px;background:rgba(111,168,255,.5)"></div>`).join("");
+const SC = 110; // px per million
+window.render = function (t) {
+  // floods map
+  const mOn = pr(t, 62.8, 63.3) * (1 - pr(t, AEND, AEND + .4)); $("map").style.opacity = mOn; $("mapShade").style.opacity = mOn;
+  cam(-45, 5, lerpLog(520, 470, pr(t, 63, 70)), .5);
+  GEO.hti.forEach(d => { let f = "#3A2530"; if (d.name === "Sud" && t > 69.1) f = `rgba(111,168,255,${.9 * eo(pr(t, 69.1, 69.5))})`; if (d.name === "Ouest" && t > 69.5) f = `rgba(111,168,255,${.9 * eo(pr(t, 69.5, 69.9))})`; dep(d.name).setAttribute("fill", f); });
+  const dS = GEO.hti.find(d => d.name === "Sud"), dO = GEO.hti.find(d => d.name === "Ouest");
+  placeAt("dlS", dS.cx, dS.cy); placeAt("dlO", dO.cx, dO.cy); $("dlS").style.opacity = eo(pr(t, 69.1, 69.4)) * mOn; $("dlO").style.opacity = eo(pr(t, 69.5, 69.8)) * mOn;
+  // S1 hook
+  scene("s1", t, -1, 6.3, .3);
+  [["s1a", 0], ["s1b", .4]].forEach(([id, a]) => { const p = pr(t, a - .2, a + .3); $(id).style.opacity = id === "s1a" ? Math.max(.4, eo(p)) : eo(p); $(id).style.transform = `translateX(${(1 - eo(p)) * -80}px)`; });
+  document.querySelectorAll(".wk").forEach((e, i) => { const x = ((t * 140 + i * 150) % 1350) - 200; e.style.left = x + "px"; e.style.transform = `translateY(${Math.abs(Math.sin(t * 7 + i)) * -8}px)`; e.style.opacity = cl(pr(t, .6 + i * .08, 1 + i * .08)) * .9; });
+  slam("s1s", t, 4.8, -4);
+  // S2 displacement
+  scene("s2", t, 6.3, 28.3);
+  pop("s2o", t, 6.5); pop("s2t", t, 9.8);
+  pop("s2R", t, 12.0, .3, 0); figAnim("s2Rf", t, 12.1, .09); count("s2v", t, 12.1, 13.4, 1.5, fmtN(1));
+  if (t > 19.3) { $("s2v").textContent = (t < 19.6 ? 1.5 : 1.49).toLocaleString("es-ES"); $("s2rl").textContent = "agosto de 2026"; } else $("s2rl").textContent = "mediados de 2026";
+  pop("s2lg", t, 13.2);
+  { const p = pop("s2house", t, 15.8, .45, 40); $("s2house").style.opacity = eo(p) * (1 - pr(t, 21.7, 22.1)); }
+  zoomIn("s2x5", t, 22.4); $("s2x5").style.opacity = +$("s2x5").style.opacity;
+  pop("s2L", t, 24.1, .4, 40); figAnim("s2Lf", t, 24.2, .12);
+  // S3 women & children
+  scene("s3", t, 28.2, 33.0);
+  pop("s3p", t, 29.3); pop("s3l", t, 30.1);
+  figAnim("s3f", t, 28.3, .06, (i, tt) => { const types = ["woman", "child", "man", "woman", "child", "man", "child", "woman", "man", "man"]; const tp = types[i];
+    const on = (tp === "woman" && tt > 30.2) || (tp === "child" && tt > 31.3); return on ? "#FFD25A" : "#8D95AB"; });
+  // S4 hunger
+  scene("s4", t, 32.9, 52.6);
+  pop("s4bowl", t, 33.1); { const p = pr(t, 34.2, 34.5); $("s4bi").style.transform = `rotate(${Math.sin(p * Math.PI * 4) * 8 * (1 - p)}deg)`; }
+  pop("s4b1", t, 38.5, .4, 30); $("s4b1b").style.width = (eo(pr(t, 38.7, 40.3)) * 3.5 * SC) + "px";
+  pop("s4ipc", t, 44.3); pop("s4d", t, 45.6);
+  pop("s4b2", t, 48.0, .4, 30); $("s4b2b").style.width = (eo(pr(t, 49.5, 50.9)) * 5.94 * SC) + "px"; count("s4v", t, 49.5, 50.9, 5.94, fmtN(2));
+  // S5 53%
+  scene("s5", t, 52.5, 62.9);
+  pop("s5h", t, 52.6); count("s5v", t, 52.8, 54.0, 53);
+  figAnim("s5f", t, 52.5, .004, (i, tt) => { if (i < 53 && tt > 52.8 + i * .022) return "#E2333F"; if (i >= 53 && i < 57 && tt > 59.5) return `rgba(255,210,90,${.5 + .4 * Math.sin(tt * 6)})`; return "rgba(245,242,234,.25)"; });
+  pop("s5ipc", t, 55.9, .4, 30); $("s5br").style.width = (eo(pr(t, 56.3, 56.9)) * (3 * (920 + 6) / 5 + 10)) + "px";
+  pop("s5risk", t, 59.4);
+  // S6 floods
+  scene("s6", t, 62.8, AEND + .3);
+  pop("s6h", t, 63.3); pop("s6m", t, 65.0); pop("s6n", t, 67.3); count("s6v", t, 67.3, 68.2, 60000);
+  document.querySelectorAll(".drop").forEach((e, i) => { const y = ((t * 900 + i * 97) % 600) - 60; e.style.top = y + "px"; e.style.opacity = pr(t, 64.0, 64.5) * (1 - pr(t, 68.8, 69.3)); });
+  scene("s9", t, AEND + .2, DUR + 1, .4);
+  chrome(t, AEND);
+};
+buildCues();
+</script></body></html>

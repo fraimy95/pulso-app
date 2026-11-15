@@ -1,0 +1,128 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css"><script src="words_4.js"></script><script src="common.js"></script>
+<style>
+#bgWarm{position:absolute;inset:-200px;background:radial-gradient(700px 700px at 60% 40%,rgba(255,210,90,.18),transparent 70%);opacity:0}
+.step{position:absolute;left:80px;width:920px;height:200px;display:flex;align-items:center;gap:34px;padding:0 40px}
+.note{position:absolute;font-size:70px;color:var(--gold);opacity:0}
+</style></head><body><div id="stage">
+<div id="bgWarm"></div>
+<div class="scene" id="s1">
+  <div class="abs h-xl" id="s1a" style="left:80px;top:300px;font-size:120px">Haití no es</div>
+  <div class="abs h-xl" id="s1b" style="left:80px;top:430px;font-size:120px">solo</div>
+  <div class="abs h-xl" id="s1v" style="left:80px;top:560px;font-size:150px;color:var(--red)">violencia</div>
+  <div class="abs" id="s1x" style="left:70px;top:650px;height:14px;width:0;background:var(--ink);border-radius:7px"></div>
+  <div class="abs h-xl" id="s1g" style="left:80px;top:730px;font-size:130px;color:var(--gold)">Es su gente</div>
+  <div class="abs figs" id="s1f" style="left:60px;top:930px;width:960px;justify-content:center"></div>
+</div>
+<div class="scene" id="s2">
+  <div class="abs big" id="s2k" style="left:80px;top:300px;font-size:150px;color:var(--gold)">Konbit</div>
+  <div class="abs lbl" id="s2l" style="left:80px;top:460px;color:var(--ink);font-size:36px">trabajo colectivo y solidario</div>
+  <div class="abs" id="s2row" style="left:40px;top:700px;width:1000px;height:320px"></div>
+  <div class="abs" id="s2brick" style="width:46px;height:30px;border-radius:6px;background:var(--gold);box-shadow:0 0 18px rgba(255,210,90,.6)"></div>
+  <div class="abs" id="s2wall" style="left:860px;top:780px;width:180px;height:240px;display:flex;flex-wrap:wrap-reverse;align-content:flex-start;gap:6px"></div>
+  <div class="abs pill gold" id="s2t" style="left:80px;top:1100px">Tradición ancestral</div>
+</div>
+<div class="scene" id="s3">
+  <div class="abs big" id="s3h" style="left:80px;top:300px;font-size:84px;line-height:1.05">Redes lideradas<br><span style="color:var(--gold)">por mujeres</span></div>
+  <svg class="abs" id="s3net" style="left:0;top:500px" width="1080" height="620" viewBox="0 0 1080 620"></svg>
+  <div class="abs pill gold" id="s3a" style="left:120px;top:1150px"></div>
+  <div class="abs pill gold" id="s3b" style="left:560px;top:1150px"></div>
+</div>
+<div class="scene" id="s4">
+  <div class="abs big" id="s4h" style="left:80px;top:300px;font-size:96px">Cultura viva</div>
+  <div class="abs card" id="s4m" style="left:80px;top:470px;width:440px;height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px"><div id="s4mi"></div><div class="big" style="font-size:64px">Kompa</div><div class="lbl">música</div></div>
+  <div class="abs card" id="s4b" style="left:560px;top:470px;width:440px;height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px"><div id="s4bi"></div><div class="big" style="font-size:64px">Literatura</div><div class="lbl">letras</div></div>
+  <div id="s4notes"></div>
+  <div class="abs stamp" id="s4s" style="left:300px;top:1060px;font-size:64px;border-color:var(--gold);color:var(--gold)">Sigue viva</div>
+</div>
+<div class="scene" id="s5">
+  <div class="abs" id="s5n" style="left:80px;top:300px;display:flex;align-items:baseline;gap:24px"><span class="big" style="font-size:170px;color:var(--gold)"><span id="s5v">0</span>%</span><span style="font-size:40px;font-weight:800;line-height:1.1">de los jóvenes<br>haitianos</span></div>
+  <div class="abs figs" id="s5f" style="left:60px;top:560px;width:960px;justify-content:center"></div>
+  <div class="abs" id="s5s" style="left:80px;top:900px;display:flex;align-items:center;gap:30px"><div id="s5si"></div><div><div class="lbl">ve en la escuela</div><div class="big" style="font-size:80px">el símbolo de<br><span style="color:var(--gold)">esperanza</span></div></div></div>
+</div>
+<div class="scene" id="s6">
+  <div class="abs big" id="s6h" style="left:80px;top:300px;font-size:84px;line-height:1.05">3 pasos<br><span style="color:var(--gold)">al mismo tiempo</span></div>
+  <div class="step card" id="st1" style="top:540px"></div>
+  <div class="step card" id="st2" style="top:770px"></div>
+  <div class="step card" id="st3" style="top:1000px"></div>
+</div>
+<div class="scene" id="s7">
+  <div class="abs big" id="s7h" style="left:80px;top:300px;font-size:84px">¿Qué podemos hacer?</div>
+  <div class="abs pill" id="a1" style="left:80px;top:440px"></div>
+  <div class="abs pill" id="a2" style="left:80px;top:550px"></div>
+  <div class="abs pill gold" id="a3" style="left:80px;top:660px"></div>
+  <div class="abs" id="s7line" style="left:60px;top:960px;height:6px;width:0;background:var(--gold);border-radius:3px;box-shadow:0 0 20px rgba(255,210,90,.8)"></div>
+  <div class="abs figs" id="s7f" style="left:40px;top:830px;width:1000px;justify-content:center;flex-wrap:nowrap"></div>
+  <div class="abs big" id="s7fut" style="left:0;width:1080px;text-align:center;top:1110px;font-size:72px;color:var(--gold)">reconstruir su futuro</div>
+</div>
+<div class="scene" id="s9" style="height:1920px">
+  <div class="abs" style="left:80px;top:300px;font-size:36px;font-weight:700;color:var(--mut);letter-spacing:.1em;text-transform:uppercase">Serie · Haití hoy</div>
+  <div class="abs" style="left:80px;top:360px;font-size:100px;font-weight:900;line-height:1.02;letter-spacing:-.03em">Infórmate.<br>Comparte.<br><span style="color:var(--gold)">Sin estereotipos.</span></div>
+  <div class="abs" style="left:80px;top:1400px;font-size:28px;color:var(--mut);font-weight:500;line-height:1.5">Fuentes: ONU / OCHA, BINUH, OIM, UNICEF, IPC,<br>ACAPS, OEA, CARICOM. Datos a noviembre de 2026.</div>
+</div>
+</div>
+<script>
+const AEND = 53.6, DUR = 57.0;
+KEYRE = /^(gente|konbit|solidario|mujeres|refugios|comedores|kompa|literatura|viva|escuela|esperanza|tres|Seguridad|derechos|humanos|elecciones|creíbles|financiamiento|rigor|estereotipos|apoyar|futuro)$/i;
+chromeInit("Resiliencia", "red");
+const MIX = ["woman", "man", "child", "woman", "man", "child", "woman", "man", "woman", "child"];
+$("s1f").innerHTML = figRow(10, MIX, "#FFD25A", 190, 18);
+$("s2row").innerHTML = Array.from({ length: 6 }, (_, i) => `<div class="abs kp" style="left:${i * 135}px;bottom:0">${fig(i % 2 ? "woman" : "man", "#F5F2EA", 280)}</div>`).join("");
+$("s2wall").innerHTML = Array.from({ length: 12 }, (_, i) => `<div class="br" style="width:52px;height:32px;border-radius:5px;background:var(--gold);opacity:0"></div>`).join("");
+(() => { const P = [[540, 130], [820, 270], [710, 520], [370, 520], [260, 270]]; let h = "";
+  P.forEach((a, i) => P.forEach((b, j) => { if (j > i) h += `<line class="ln" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#FFD25A" stroke-width="4" stroke-opacity=".5" stroke-dasharray="700" stroke-dashoffset="700"/>`; }));
+  P.forEach((a, i) => h += `<g class="nd" opacity="0" transform="translate(${a[0] - 40} ${a[1] - 100})"><circle cx="40" cy="60" r="72" fill="#0A0F1E" stroke="#FFD25A" stroke-width="4"/><g transform="translate(18 5) scale(1.1)">${FIG.woman("#FFD25A")}</g></g>`);
+  $("s3net").innerHTML = h; })();
+$("s3a").innerHTML = icon("house", 40, "#FFD25A") + " Refugios"; $("s3b").innerHTML = icon("bowl", 40, "#FFD25A") + " Comedores";
+$("s4mi").innerHTML = icon("drum", 170, "#FFD25A", 1.4); $("s4bi").innerHTML = icon("book", 170, "#FFD25A", 1.4);
+$("s4notes").innerHTML = Array.from({ length: 8 }, (_, i) => `<div class="note" id="nt${i}">${i % 2 ? "♪" : "♫"}</div>`).join("");
+$("s5f").innerHTML = figRow(10, "student", "rgba(245,242,234,.25)", 200, 8);
+$("s5si").innerHTML = icon("school", 170, "#FFD25A", 1.4);
+[["st1", "shield", "Seguridad efectiva", "que respete los derechos humanos"], ["st2", "ballot", "Elecciones creíbles", "instituciones legítimas"], ["st3", "coin", "Financiamiento", "humanitario sostenido"]].forEach(([id, ic, a, b]) =>
+  $(id).innerHTML = `<div style="width:120px;height:120px;border-radius:28px;background:rgba(255,210,90,.15);display:flex;align-items:center;justify-content:center;flex:none">${icon(ic, 76, "#FFD25A", 1.8)}</div><div><div style="font-size:52px;font-weight:900">${a}</div><div class="lbl" style="font-size:26px">${b}</div></div>`);
+$("a1").innerHTML = icon("search", 40) + " Informarnos con rigor"; $("a2").innerHTML = icon("chat", 40) + " Evitar estereotipos"; $("a3").innerHTML = icon("heart", 40, "#FFD25A") + " Apoyar a organizaciones locales";
+$("s7f").innerHTML = figRow(12, ["man", "woman", "child", "woman", "man", "child"], "#FFD25A", 170, 8);
+window.render = function (t) {
+  $("bgWarm").style.opacity = pr(t, 5.0, 6.5) * (1 - pr(t, AEND + .5, DUR));
+  // S1
+  scene("s1", t, -1, 6.3, .3);
+  [["s1a", 0], ["s1b", .35], ["s1v", .7]].forEach(([id, a]) => { const p = pr(t, a - .2, a + .3); $(id).style.opacity = (id === "s1a" ? Math.max(.4, eo(p)) : eo(p)); $(id).style.transform = `translateX(${(1 - eo(p)) * -80}px)`; });
+  { const w = eo(pr(t, 4.6, 5.0)); $("s1x").style.width = (w * 660) + "px"; $("s1v").style.color = w > 0 ? `rgba(226,51,63,${1 - .6 * w})` : "var(--red)"; const g = eo(pr(t, 5.1, 5.6)); $("s1g").style.opacity = g; $("s1g").style.transform = `translateY(${(1 - g) * 40}px)`; if (REC) rec(4.6, "strike"); }
+  figAnim("s1f", t, 5.3, .06);
+  // S2 konbit
+  scene("s2", t, 6.3, 13.95);
+  zoomIn("s2k", t, 9.6, 1.5); pop("s2l", t, 11.8); pop("s2t", t, 10.6);
+  document.querySelectorAll(".kp").forEach((e, i) => { const p = pr(t, 6.6 + i * .12, 6.9 + i * .12); e.style.opacity = eo(p); e.style.transform = `translateY(${(1 - eb(p)) * 40}px) rotate(${Math.sin(t * 5 - i) * 2}deg)`; });
+  { const cyc = 1.0, k = Math.max(0, t - 8.2); const ph = (k % cyc) / cyc; const x = 40 + 70 + ph * 5 * 135 + 0; const y = 700 + 110 - Math.sin(ph * Math.PI * 5) * 30;
+    const b = $("s2brick"); b.style.left = x + "px"; b.style.top = y + "px"; b.style.opacity = t > 8.2 && t < 13.7 ? 1 : 0;
+    const n = Math.floor(k / cyc); document.querySelectorAll(".br").forEach((e, i) => e.style.opacity = i < n * 2 ? 1 : 0); }
+  // S3 women network
+  scene("s3", t, 13.9, 18.25);
+  pop("s3h", t, 14.0);
+  document.querySelectorAll(".nd").forEach((e, i) => e.setAttribute("opacity", eo(pr(t, 14.3 + i * .15, 14.6 + i * .15))));
+  document.querySelectorAll(".ln").forEach((e, i) => e.setAttribute("stroke-dashoffset", 700 * (1 - eo(pr(t, 15.4 + i * .05, 16.2 + i * .05)))));
+  pop("s3a", t, 16.6); pop("s3b", t, 17.3);
+  // S4 culture
+  scene("s4", t, 18.2, 23.65);
+  pop("s4h", t, 18.4); pop("s4m", t, 20.3); pop("s4b", t, 21.5);
+  for (let i = 0; i < 8; i++) { const e = $("nt" + i); const k = ((t - 20.5 + i * .35) % 2.4) / 2.4; e.style.left = (140 + (i * 53) % 330) + "px"; e.style.top = (900 - k * 420) + "px"; e.style.opacity = t > 20.5 ? Math.sin(k * Math.PI) : 0; }
+  slam("s4s", t, 22.7, -5);
+  // S5 93%
+  scene("s5", t, 23.6, 30.65);
+  pop("s5n", t, 23.9); count("s5v", t, 24.1, 25.2, 93);
+  figAnim("s5f", t, 24.0, .07, (i, tt) => { const on = tt > 24.2 + i * .1; if (!on) return "rgba(245,242,234,.25)"; return i < 9 ? "#FFD25A" : "rgba(255,210,90,.45)"; });
+  pop("s5s", t, 26.9); { const e = $("s5si"); e.style.filter = `drop-shadow(0 0 ${20 + 14 * Math.sin(t * 4)}px rgba(255,210,90,.6))`; }
+  // S6 three steps
+  scene("s6", t, 30.6, 41.95);
+  pop("s6h", t, 32.8); slideX("st1", t, 34.8); slideX("st2", t, 38.2); slideX("st3", t, 39.6);
+  { const g = t > 40.9 ? .5 + .5 * Math.sin((t - 40.9) * 6) : 0; ["st1", "st2", "st3"].forEach(id => $(id).style.boxShadow = `0 0 ${40 * g}px rgba(255,210,90,${.45 * g})`); if (REC) rec(40.9, "pop"); }
+  // S7 citizens
+  scene("s7", t, 41.9, AEND + .3);
+  pop("s7h", t, 42.1); slideX("a1", t, 43.6); slideX("a2", t, 45.4); slideX("a3", t, 46.8);
+  figAnim("s7f", t, 49.7, .06); $("s7line").style.width = (eo(pr(t, 50.4, 51.6)) * 960) + "px";
+  pop("s7fut", t, 52.0);
+  scene("s9", t, AEND + .2, DUR + 1, .4);
+  chrome(t, AEND);
+};
+buildCues();
+</script></body></html>
