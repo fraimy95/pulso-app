@@ -1,0 +1,7 @@
+.venv/
+salida/
+voces/
+pruebas/resultados/
+pruebas/informe.*
+__pycache__/
+*.pyc

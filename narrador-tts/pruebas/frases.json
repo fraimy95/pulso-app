@@ -1,0 +1,18 @@
+[
+  {"categoria": "Cifras", "texto": "Más de 6,4 millones de personas necesitan ayuda humanitaria en 2026."},
+  {"categoria": "Cifras", "texto": "Entre enero y septiembre se documentaron 4.217 muertes y 1.860 heridos."},
+  {"categoria": "Cifras", "texto": "Las bandas controlan entre el 80 y el 90 % de la capital."},
+  {"categoria": "Cifras", "texto": "El plan de 880 millones de dólares solo alcanzó un 27 % de fondos."},
+  {"categoria": "Fechas", "texto": "La dictadura de los Duvalier duró de 1957 a 1986."},
+  {"categoria": "Fechas", "texto": "El 30 de septiembre de 2025 se aprobó la Resolución 2793."},
+  {"categoria": "Siglas", "texto": "La ONU, la OIM, el BINUH y UNICEF publicaron nuevos informes."},
+  {"categoria": "Siglas", "texto": "El análisis del IPC confirmó la crisis alimentaria."},
+  {"categoria": "Nombres propios", "texto": "La emboscada ocurrió en Croix-des-Bouquets, cerca de Puerto Príncipe.", "revisar_oido": true},
+  {"categoria": "Nombres propios", "texto": "El primer ministro Alix Didier Fils-Aimé encabeza el Ejecutivo.", "revisar_oido": true},
+  {"categoria": "Nombres propios", "texto": "Coaliciones como Viv Ansanm dominan el departamento de Artibonite.", "revisar_oido": true},
+  {"categoria": "Fonética", "texto": "El perro de Ramón corrió por la carretera junto al río."},
+  {"categoria": "Fonética", "texto": "La cigüeña y el pingüino llegaron al año siguiente a la montaña."},
+  {"categoria": "Fonética", "texto": "Él sabía que el té de la tía Lucía estaba frío."},
+  {"categoria": "Entonación", "texto": "¿Cómo se llegó hasta aquí y qué está pasando hoy?"},
+  {"categoria": "Entonación", "texto": "A pesar de todo, la cultura haitiana sigue viva."}
+]

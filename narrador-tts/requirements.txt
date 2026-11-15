@@ -1,0 +1,8 @@
+# Probado con estas versiones (noviembre de 2026)
+mlx-audio==0.6.5        # MIT · incluye mlx (MIT) y huggingface_hub
+soundfile>=0.13         # BSD-3
+numpy>=1.26             # BSD-3
+pyloudnorm>=0.1.1       # MIT · normalización a -16 LUFS
+num2words>=0.5.13       # LGPL-2.1 · cifras -> palabras (uso como librería, apto para uso comercial)
+jiwer>=3.0              # Apache-2.0 · métricas WER/CER de las pruebas de pronunciación
+gradio>=6,<7            # Apache-2.0 · interfaz local
