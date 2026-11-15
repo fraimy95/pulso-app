@@ -1,0 +1,5 @@
+motor/node_modules/
+motor/out/
+herramientas/whisper.cpp/
+*/renders/*.mp4
+*/subtitulos/*.16k.wav

@@ -1,0 +1,28 @@
+{
+  "name": "motor-documentales",
+  "private": true,
+  "description": "Plantilla Remotion reutilizable para documentales verticales",
+  "scripts": {
+    "studio": "remotion studio",
+    "preview": "remotion render src/index.ts",
+    "render": "remotion render src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.543",
+    "@remotion/cli": "4.0.543",
+    "@remotion/layout-utils": "4.0.543",
+    "@remotion/media-utils": "4.0.543",
+    "d3-geo": "3.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.543",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "3.1.0",
+    "@types/react": "19.1.8",
+    "@types/topojson-client": "3.1.5",
+    "typescript": "5.8.3"
+  }
+}

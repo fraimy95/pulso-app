@@ -1,0 +1,406 @@
+{
+	"systeminfo": "WHISPER : VITISAI = 0 | COREML = 0 | OPENVINO = 0 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "small",
+		"multilingual": true,
+		"vocab": 51865,
+		"audio": {
+			"ctx": 1500,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"text": {
+			"ctx": 448,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/home/user/pulso-app/documentales/herramientas/whisper.cpp/models/ggml-small.bin",
+		"language": "es",
+		"translate": false
+	},
+	"result": {
+		"language": "es"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:00,030"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 30
+			},
+			"text": ""
+		},
+		{
+			"timestamps": {
+				"from": "00:00:00,030",
+				"to": "00:00:00,870"
+			},
+			"offsets": {
+				"from": 30,
+				"to": 870
+			},
+			"text": " Europa"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:00,870",
+				"to": "00:00:02,940"
+			},
+			"offsets": {
+				"from": 870,
+				"to": 2940
+			},
+			"text": " 1938."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:02,940",
+				"to": "00:00:03,240"
+			},
+			"offsets": {
+				"from": 2940,
+				"to": 3240
+			},
+			"text": " Miles"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:03,240",
+				"to": "00:00:03,360"
+			},
+			"offsets": {
+				"from": 3240,
+				"to": 3360
+			},
+			"text": " de"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:03,360",
+				"to": "00:00:03,750"
+			},
+			"offsets": {
+				"from": 3360,
+				"to": 3750
+			},
+			"text": " judíos"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:03,750",
+				"to": "00:00:04,040"
+			},
+			"offsets": {
+				"from": 3750,
+				"to": 4040
+			},
+			"text": " huían"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,040",
+				"to": "00:00:04,180"
+			},
+			"offsets": {
+				"from": 4040,
+				"to": 4180
+			},
+			"text": " de"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,180",
+				"to": "00:00:04,320"
+			},
+			"offsets": {
+				"from": 4180,
+				"to": 4320
+			},
+			"text": " la"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,320",
+				"to": "00:00:05,090"
+			},
+			"offsets": {
+				"from": 4320,
+				"to": 5090
+			},
+			"text": " persecución"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:05,090",
+				"to": "00:00:05,530"
+			},
+			"offsets": {
+				"from": 5090,
+				"to": 5530
+			},
+			"text": " nazi,"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:05,530",
+				"to": "00:00:05,760"
+			},
+			"offsets": {
+				"from": 5530,
+				"to": 5760
+			},
+			"text": " pero"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:05,760",
+				"to": "00:00:06,000"
+			},
+			"offsets": {
+				"from": 5760,
+				"to": 6000
+			},
+			"text": " casi"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:06,000",
+				"to": "00:00:06,430"
+			},
+			"offsets": {
+				"from": 6000,
+				"to": 6430
+			},
+			"text": " ningún"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:06,430",
+				"to": "00:00:06,740"
+			},
+			"offsets": {
+				"from": 6430,
+				"to": 6740
+			},
+			"text": " país"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:06,740",
+				"to": "00:00:07,120"
+			},
+			"offsets": {
+				"from": 6740,
+				"to": 7120
+			},
+			"text": " quería"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:07,120",
+				"to": "00:00:08,450"
+			},
+			"offsets": {
+				"from": 7120,
+				"to": 8450
+			},
+			"text": " recibirlos."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:08,450",
+				"to": "00:00:08,490"
+			},
+			"offsets": {
+				"from": 8450,
+				"to": 8490
+			},
+			"text": " Al"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:08,490",
+				"to": "00:00:08,770"
+			},
+			"offsets": {
+				"from": 8490,
+				"to": 8770
+			},
+			"text": " otro"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:08,770",
+				"to": "00:00:09,010"
+			},
+			"offsets": {
+				"from": 8770,
+				"to": 9010
+			},
+			"text": " lado"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:09,010",
+				"to": "00:00:09,290"
+			},
+			"offsets": {
+				"from": 9010,
+				"to": 9290
+			},
+			"text": " del"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:09,290",
+				"to": "00:00:09,960"
+			},
+			"offsets": {
+				"from": 9290,
+				"to": 9960
+			},
+			"text": " Atlántico,"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:09,960",
+				"to": "00:00:10,030"
+			},
+			"offsets": {
+				"from": 9960,
+				"to": 10030
+			},
+			"text": " un"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:10,030",
+				"to": "00:00:10,520"
+			},
+			"offsets": {
+				"from": 10030,
+				"to": 10520
+			},
+			"text": " pequeño"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:10,520",
+				"to": "00:00:10,810"
+			},
+			"offsets": {
+				"from": 10520,
+				"to": 10810
+			},
+			"text": " país"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:10,810",
+				"to": "00:00:11,000"
+			},
+			"offsets": {
+				"from": 10810,
+				"to": 11000
+			},
+			"text": " del"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:11,000",
+				"to": "00:00:11,400"
+			},
+			"offsets": {
+				"from": 11000,
+				"to": 11400
+			},
+			"text": " Caribe"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:11,400",
+				"to": "00:00:11,850"
+			},
+			"offsets": {
+				"from": 11400,
+				"to": 11850
+			},
+			"text": " ofreció"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:11,850",
+				"to": "00:00:12,360"
+			},
+			"offsets": {
+				"from": 11850,
+				"to": 12360
+			},
+			"text": " abrirles"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:12,360",
+				"to": "00:00:12,580"
+			},
+			"offsets": {
+				"from": 12360,
+				"to": 12580
+			},
+			"text": " sus"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:12,580",
+				"to": "00:00:13,260"
+			},
+			"offsets": {
+				"from": 12580,
+				"to": 13260
+			},
+			"text": " puertas,"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:13,260",
+				"to": "00:00:13,410"
+			},
+			"offsets": {
+				"from": 13260,
+				"to": 13410
+			},
+			"text": " la"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:13,410",
+				"to": "00:00:14,090"
+			},
+			"offsets": {
+				"from": 13410,
+				"to": 14090
+			},
+			"text": " República"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:14,090",
+				"to": "00:00:14,960"
+			},
+			"offsets": {
+				"from": 14090,
+				"to": 14960
+			},
+			"text": " Dominicana."
+		}
+	]
+}

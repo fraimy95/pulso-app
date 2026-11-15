@@ -1,0 +1,39 @@
+{
+  "provider": "kokoro",
+  "sample_rate": 24000,
+  "channels": 1,
+  "combined": {
+    "file": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s/voiceover.wav",
+    "duration": 14.999
+  },
+  "captions": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s/voiceover.srt",
+  "duration": 14.999,
+  "segments": [
+    {
+      "id": "01-europa",
+      "file": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s/01-europa.wav",
+      "duration": 7.915,
+      "start": 0,
+      "end": 7.915,
+      "text": "Europa, mil novecientos treinta y ocho. Miles de judíos huían de la persecución nazi, pero casi ningún país quería recibirlos.",
+      "voice": "em_alex",
+      "model": "kokoro",
+      "speed": 0.95,
+      "hash": "281f93521ed20a5e",
+      "cached": true
+    },
+    {
+      "id": "02-sosua",
+      "file": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s/02-sosua.wav",
+      "duration": 6.635,
+      "start": 8.365,
+      "end": 14.999,
+      "text": "Al otro lado del Atlántico, un pequeño país del Caribe ofreció abrirles sus puertas: la República Dominicana.",
+      "voice": "em_alex",
+      "model": "kokoro",
+      "speed": 0.95,
+      "hash": "31960bc3af634171",
+      "cached": true
+    }
+  ]
+}
