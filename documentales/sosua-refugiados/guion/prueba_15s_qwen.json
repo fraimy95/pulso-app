@@ -1,0 +1,10 @@
+{
+  "provider": "kokoro",
+  "voice": "em_alex",
+  "speed": 0.95,
+  "pause": 0.45,
+  "segments": [
+    {"id": "01-europa", "text": "Europa, mil novecientos treinta y ocho. Miles de judíos huían de la persecución nazi, pero casi ningún país quería recibirlos."},
+    {"id": "02-sosua", "text": "Al otro lado del Atlántico, un pequeño país del Caribe ofreció abrirles sus puertas: la República Dominicana."}
+  ]
+}

@@ -1,0 +1,233 @@
+[
+ {
+  "text": " Europa,",
+  "startMs": 30,
+  "endMs": 1060,
+  "timestampMs": 545,
+  "confidence": null
+ },
+ {
+  "text": " 1938.",
+  "startMs": 1060,
+  "endMs": 3110,
+  "timestampMs": 2085,
+  "confidence": null
+ },
+ {
+  "text": " Miles",
+  "startMs": 3110,
+  "endMs": 3490,
+  "timestampMs": 3300,
+  "confidence": null
+ },
+ {
+  "text": " de",
+  "startMs": 3490,
+  "endMs": 3640,
+  "timestampMs": 3565,
+  "confidence": null
+ },
+ {
+  "text": " judíos",
+  "startMs": 3640,
+  "endMs": 4310,
+  "timestampMs": 3975,
+  "confidence": null
+ },
+ {
+  "text": " huían",
+  "startMs": 4310,
+  "endMs": 4580,
+  "timestampMs": 4445,
+  "confidence": null
+ },
+ {
+  "text": " de",
+  "startMs": 4580,
+  "endMs": 4750,
+  "timestampMs": 4665,
+  "confidence": null
+ },
+ {
+  "text": " la",
+  "startMs": 4750,
+  "endMs": 4920,
+  "timestampMs": 4835,
+  "confidence": null
+ },
+ {
+  "text": " persecución",
+  "startMs": 4920,
+  "endMs": 6130,
+  "timestampMs": 5525,
+  "confidence": null
+ },
+ {
+  "text": " nazi,",
+  "startMs": 6130,
+  "endMs": 6440,
+  "timestampMs": 6285,
+  "confidence": null
+ },
+ {
+  "text": " pero",
+  "startMs": 6440,
+  "endMs": 6700,
+  "timestampMs": 6570,
+  "confidence": null
+ },
+ {
+  "text": " casi",
+  "startMs": 6700,
+  "endMs": 6920,
+  "timestampMs": 6810,
+  "confidence": null
+ },
+ {
+  "text": " ningún",
+  "startMs": 6920,
+  "endMs": 7270,
+  "timestampMs": 7095,
+  "confidence": null
+ },
+ {
+  "text": " país",
+  "startMs": 7270,
+  "endMs": 7520,
+  "timestampMs": 7395,
+  "confidence": null
+ },
+ {
+  "text": " quería",
+  "startMs": 7520,
+  "endMs": 8000,
+  "timestampMs": 7760,
+  "confidence": null
+ },
+ {
+  "text": " recibirlos.",
+  "startMs": 8000,
+  "endMs": 9040,
+  "timestampMs": 8520,
+  "confidence": null
+ },
+ {
+  "text": " Al",
+  "startMs": 9040,
+  "endMs": 9170,
+  "timestampMs": 9105,
+  "confidence": null
+ },
+ {
+  "text": " otro",
+  "startMs": 9170,
+  "endMs": 9430,
+  "timestampMs": 9300,
+  "confidence": null
+ },
+ {
+  "text": " lado",
+  "startMs": 9430,
+  "endMs": 9690,
+  "timestampMs": 9560,
+  "confidence": null
+ },
+ {
+  "text": " del",
+  "startMs": 9690,
+  "endMs": 9890,
+  "timestampMs": 9790,
+  "confidence": null
+ },
+ {
+  "text": " Atlántico,",
+  "startMs": 9890,
+  "endMs": 10630,
+  "timestampMs": 10260,
+  "confidence": null
+ },
+ {
+  "text": " un",
+  "startMs": 10630,
+  "endMs": 10750,
+  "timestampMs": 10690,
+  "confidence": null
+ },
+ {
+  "text": " pequeño",
+  "startMs": 10750,
+  "endMs": 11210,
+  "timestampMs": 10980,
+  "confidence": null
+ },
+ {
+  "text": " país",
+  "startMs": 11210,
+  "endMs": 11510,
+  "timestampMs": 11360,
+  "confidence": null
+ },
+ {
+  "text": " del",
+  "startMs": 11510,
+  "endMs": 11850,
+  "timestampMs": 11680,
+  "confidence": null
+ },
+ {
+  "text": " Caribe",
+  "startMs": 11850,
+  "endMs": 12120,
+  "timestampMs": 11985,
+  "confidence": null
+ },
+ {
+  "text": " ofreció",
+  "startMs": 12120,
+  "endMs": 12580,
+  "timestampMs": 12350,
+  "confidence": null
+ },
+ {
+  "text": " abrirles",
+  "startMs": 12580,
+  "endMs": 13120,
+  "timestampMs": 12850,
+  "confidence": null
+ },
+ {
+  "text": " sus",
+  "startMs": 13120,
+  "endMs": 13430,
+  "timestampMs": 13275,
+  "confidence": null
+ },
+ {
+  "text": " puertas.",
+  "startMs": 13430,
+  "endMs": 14520,
+  "timestampMs": 13975,
+  "confidence": null
+ },
+ {
+  "text": " La",
+  "startMs": 14520,
+  "endMs": 14640,
+  "timestampMs": 14580,
+  "confidence": null
+ },
+ {
+  "text": " República",
+  "startMs": 14640,
+  "endMs": 15200,
+  "timestampMs": 14920,
+  "confidence": null
+ },
+ {
+  "text": " Dominicana.",
+  "startMs": 15200,
+  "endMs": 15840,
+  "timestampMs": 15520,
+  "confidence": null
+ }
+]

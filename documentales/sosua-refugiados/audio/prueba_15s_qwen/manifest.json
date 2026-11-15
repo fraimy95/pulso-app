@@ -1,0 +1,19 @@
+{
+ "segments": [
+  {
+   "id": "01-europa",
+   "file": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s_qwen/01-europa.wav",
+   "duration": 8.591,
+   "start": 0.0,
+   "end": 8.591
+  },
+  {
+   "id": "02-sosua",
+   "file": "/home/user/pulso-app/documentales/sosua-refugiados/audio/prueba_15s_qwen/02-sosua.wav",
+   "duration": 6.832,
+   "start": 9.041,
+   "end": 15.873
+  }
+ ],
+ "duration": 15.873
+}
